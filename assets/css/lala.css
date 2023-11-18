@@ -1,0 +1,23 @@
+#boton-volver {
+    position: fixed; /* Esto fija el botón en la pantalla */
+    left: 10px; /* Esto lo coloca a 10px del borde izquierdo */
+    top: 50%; /* Esto lo coloca verticalmente en el centro */
+    transform: translateY(-50%); /* Esto lo ajusta verticalmente */
+}
+
+    background-color:gold ;
+    color:#1c1c1c;
+    text-decoration: none;
+    padding: 10px 16px;
+    margin: 16px;
+    border: none;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    left: 10px; /* Esto lo coloca a 10px del borde izquierdo */
+    top: 30%; /* Esto lo coloca verticalmente en el centro */
+    height:200px;
+    width:200px;
+    position: absolute;

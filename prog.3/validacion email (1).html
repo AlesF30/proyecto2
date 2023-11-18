@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title> Título </title>
+    </head>
+    <body>
+            <input type="text" id="email" />
+
+            <button type="button" onclick="validar()">validar</button>
+    </body>
+</html>
+
+<script>
+    function validar() {
+        let in_email = document.getElementById('email').value;
+
+        if(emailValido(in_email)) {
+            alert('todo ok');
+        } else {
+            alert('no valido');
+        }
+    }
+
+    function emailValido(email) {
+        return /^\S+@\S+\.\S+$/.test(email);
+    }
+</script>
+

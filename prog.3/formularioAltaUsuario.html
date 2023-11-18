@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Alta de Usuario</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #add8e6; /* Fondo celeste claro */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff; /* Contenedor blanco */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        h2 {
+            color: orange; /* Color naranja para el título */
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: orange; /* Botón naranja */
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        /* Estilos para los botones de opción (radio buttons) */
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <form id="registroForm" action="procesar_registro.php" method="post">
+        <h2>Registro de Usuario</h2>
+
+        <label for="fullName">Nombre Completo:</label>
+        <input type="text" id="fullName" name="fullName" required>
+
+        <label for="email">Correo Electrónico:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="mobileNumber">Número de Teléfono:</label>
+        <input type="tel" id="mobileNumber" name="mobileNumber" required>
+
+        <label for="country">País:</label>
+        <select id="country" name="country" required>
+            <option value="usa">Estados Unidos</option>
+            <option value="canada">Canadá</option>
+            <option value="mexico">México</option>
+            <!-- Agrega más opciones según sea necesario -->
+        </select>
+
+        <label>Género:</label>
+        <input type="radio" id="male" name="gender" value="male" required>
+        <label for="male">Masculino</label>
+
+        <input type="radio" id="female" name="gender" value="female" required>
+        <label for="female">Femenino</label>
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+</body>
+</html>

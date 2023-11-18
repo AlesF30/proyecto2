@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validaciones con JS y FORM</title>
+</head>
+<body>
+    <form id="form-user" method="post">
+        <legend>Datos personales</legend>
+        <label  for="name">Nombre</label>
+        <input  type="text" name="name" id="name" autocomplete="off" >
+        <label  for="lastname">Apellido</label>
+        <input  type="text" name="lastname" id="lastname" autocomplete="off">
+        <label for="email">Correo Electronico</label>
+        <input type="email" name="email" id="email">
+        <button onclick="validar()"   type="button">Guardar</button>
+    </form>
+</body>
+<script>
+//validaciones form
+    function validar(){
+        let in_name =document.getElementById('name').value;
+        let in_lastname =document.getElementById('lastname').value;
+        let in_edad =document.getElementById('edad').value;
+        let in_email =document.getElementById('email').value;
+        if (in_name.length == 0 || in_name.trim() == ""){
+            alert('Nombre no ingresado');
+            return;
+        }
+       if (in_lastname.length == 0 || in_lastname.trim() == ""){
+            alert('apellido no ingresado');
+            return;
+        }
+        if (in_edad.length == 0 || in_edad.trim() == ""){
+            alert('edad no ingresado');
+            return;
+        } else{
+            if(isNaN(in_edad)){
+                alert('La edad debe ser un numero');
+                return;
+            }else{
+                if(in_edad<18){
+                    alert('Debe ser mayor de edad');
+                }
+            }
+        }
+        if (in_email.length == 0 || in_email.trim() == ""){
+            alert('email no ingresado');
+            return;
+        }
+
+        //document.getElementById('form-user').submit();
+    }
+</script>
+</html>

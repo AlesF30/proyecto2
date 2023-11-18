@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>timers</title>
+    <style>
+        .msj-error{
+            background-color: red;
+            color: white;
+            padding: 20px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <h1>Titulo de prueba</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur 
+        adipisicing elit. Placeat error debitis vel 
+        distinctio aperiam non.</p>
+        <span class="msj-error">Mensaje</span>
+    </section>
+</body>
+</html>
+<script>
+    window.onload=function(){
+        setTimeout(function(){
+            document.getElementsByClassName('msj-error')[0].style.display='none';
+        },3000);
+        setInterval(function(){
+            //alert('Mensaje');
+        },3000);
+    }
+</script>

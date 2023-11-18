@@ -1,0 +1,130 @@
+	
+*{
+    font-family: sans-serif;
+}
+
+body {
+    background: rgba(0,0,0,0.5)url(../../assets/img/modelos.png);
+    background-blend-mode: darken;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+}
+
+div {
+    background-color: rgba(243, 238, 238, 0.966);
+    border-color: black;
+    border-style: solid;
+    border-top: 7px solid black;
+    border-radius: 20px 20px 20px 20px;
+    padding: 10px 0;
+    background-position: center;
+    margin: 60px;
+    width: 40%;
+    box-shadow: 6px 20px 10px black;
+    margin-right:auto;
+    margin-left: auto;
+}
+
+
+input[type="text"],
+input[type="password"] {
+                padding: 10px;
+                margin: 6px;
+                display: inline-block;
+                font-size: 16px;
+                border: 2px;
+                border-radius: 5px;
+}
+
+label {
+    display: inline-block;
+    width: 60%;
+    text-align: center;
+}
+
+fieldset {
+    border: white;
+    text-align: center;
+    margin: auto;
+}
+
+div h1 {
+    color: black;
+    font-size: 28px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 6px; /* Separar letras */
+    text-shadow: 4px 5px 5px grey; /*Esto debemos colocar en nuestro sistema, da sombra al t�tulo. Primer linea mueve a la derecha y otra a la izquierda, tercer 10px es difuminado */
+}
+
+p {
+    display: inline-block;
+    text-align: center;
+    letter-spacing: 3px;
+    width: 60%;
+    margin-right: auto;
+    margin-left: 20%;
+    margin-top: 10px;
+}
+
+button[type="submit"] {
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 6px;
+    width: 150px;
+    display: block;
+    color: #FFFFFF;
+    background-color: #000000;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+*{
+    text-decoration: none;
+}
+
+button[type="submit"]:hover {
+                            background-color: #333333;
+                        }
+
+img{
+    display:inline-block;
+    margin-left: auto;
+    margin-right: 1%;
+    width: 20px;
+    height: 20px;
+}
+
+.errormsj{
+    display:inline-block;
+    padding: 15px;
+    font-size: 20px;
+    letter-spacing: 2px;
+    color:red;
+    text-align: center;
+    position:relative;
+    margin-left: 18%;
+
+}
+
+.errormsj img{
+    display:inline-block;
+    margin-left: auto;
+    margin-right: 2%;
+    width: 40px;
+    height: 40px;
+}
+
+footer {
+    display: block;
+    
+}
+
+.imagen-login{
+    width: 150px;
+    height: 150px;
+    margin: 1px;
+
+}

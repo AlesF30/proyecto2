@@ -1,0 +1,629 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'PT Sans', sans-serif;
+  }
+
+
+h1, h2 {
+    text-align: center;
+}
+
+h1{
+    color: #1c1c1c;
+    font-size: 28px;
+    text-transform: uppercase;
+    letter-spacing: 5px; /* Separar letras */
+    text-shadow: 2px 5px 5px #fafbfb;
+    display: inline-block;
+    padding: 15px;
+    margin: 5px;
+}
+
+legend{
+    color: #1c1c1c;
+    font-size: 28px;
+    text-shadow: 2px 5px 5px #fafbfb;
+    display: inline-block;
+    padding: 10px;
+    margin: 2px;
+}
+
+h2{
+    color: #1c1c1c;
+    font-size: 24px;
+    margin: 10px;
+    display: inline-block;
+    padding: 10px;
+    letter-spacing: 2px; /* Separar letras */
+    text-transform: uppercase;
+}
+
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family:'PT Sans', sans-serif;
+    background-color:#2b2b2b;
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom:40px;
+    text-align: center;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+    
+#agrupar{
+        width: 100%;
+        padding: 0;
+        margin: 0;
+}
+
+#cabecera{
+    width: 100%;
+    background-color: #fafbfb;
+    padding: 2%;
+    margin: 0;
+    height: auto;
+    text-align: center;
+}
+
+figure img{
+    width: 50%;
+}
+
+.logo img{
+    width: 80%;
+    background-repeat:no-repeat;
+    display: inline-block;
+    text-align: center;
+}
+
+
+
+    span{
+        font-size: 20px;
+        }
+
+
+li img{
+    display: inline-block;
+    margin: 10px;
+    padding: 4px;
+    margin-left: 55px;
+    position:absolute;
+    height: 35px;
+    text-align: center;
+
+}
+
+.hidden{
+    display: none;
+}
+
+ul li:hover >.hidden{
+                display: block;
+                color:#1c1c1c;
+}
+
+
+article {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color:#fafbfb;
+    padding: 15px;
+    margin: 20px;
+}
+
+/* logo de inicio */
+
+.logo {
+    width: 100px;
+    display: inline-block;
+    float: left;
+}
+
+    /* formulario */
+
+.container{
+    background-color: #fafbfb;
+    margin: 5px;
+    padding:20px;
+    text-align:center;
+    color: #1c1c1c;
+    padding: auto;
+}
+
+fieldset {
+    border: none;
+    text-align: center;
+    margin: auto;
+}
+
+
+label{
+    margin-bottom: 10px;
+    margin: 9px;
+    font-size:24px;
+    display: block;
+    font-weight: bold;
+    color:#1c1c1c;
+}
+
+.boton{
+    background-color:#1c1c1c;
+    color:#fafbfb;
+    padding: 14px 28px;
+    margin: 12px;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.boton:hover{
+    background-color:darkgrey;
+    color: #1c1c1c;
+}
+
+/* tablas */
+
+div *{
+    text-decoration: none;
+}
+
+
+.tabla {
+    margin-top: 20px;
+}
+
+
+div .tablaMaestra{
+    background-color: #fafbfb;
+    margin: 10px;
+    padding:40px;
+    text-align:center;
+    color:#333;
+    padding: auto;
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 0 40px 0;
+    padding:auto;
+    width: 100%;
+    display: table;
+}
+
+table, th, td {
+    border: 1px solid #ccc;
+}
+
+
+th, td {
+  padding: 10px;
+  font-size: 16px;
+  text-align: left;
+}
+
+/* fila de los nombres de columnas */
+
+th {
+    background-color:#6a737b;
+    color: #fff;
+}
+
+/* 1er fila de datos */
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* 2da fila de datos */
+
+tr:nth-child(odd) {
+    background-color:darkgray;
+    color:#1c1c1c;
+    font-size: 14px;
+}
+
+
+.Boton_eliminar img{
+    display: flex;
+    height: 80%;
+    width: 30%;
+    margin: 0 auto;
+}
+
+.Boton_eliminar{
+    display: block;
+    width: 100px;
+    height: 40px;
+    background-color:#EC7063;
+    color:#fafbfb;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.Boton_eliminar:hover{
+    background-color:brown;
+    color:#fafbfb;
+}
+
+/* listado de alumnos */
+
+.BotonEliminar img{
+    display: flex;
+    height: 80%;
+    width: 30%;
+    margin: 0 auto;
+}
+
+ 
+.BotonEliminar{
+    display: block;
+    width: 100px;
+    height: 40px;
+    background-color:#EC7063;
+    color:#fafbfb;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.BotonEliminar:hover{
+    background-color:brown;
+    color:#fafbfb;
+}
+
+
+.BotonModificar img{
+    display: flex;
+    height: 80%;
+    width: 30%;
+    margin: 0 auto;    
+}
+
+.BotonModificar{
+    display: block;
+    width: 100px;
+    height: 40px;
+    background-color:#85C1E9;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.BotonModificar:hover{
+    background-color:#85C1E9;
+    color:#fafbfb;
+}
+
+
+.BotonVer img{
+    display: flex;
+    height: 90%;
+    width: 40%;
+    margin: 0 auto;    
+}
+
+.BotonVer{
+    display: flex;
+    width: 100px;
+    height: 40px;
+    background-color:#ccc;
+    justify-content: center;
+    align-items: center;
+}
+
+.BotonVer:hover{
+    background-color:#fafbfb;
+}
+
+.container{
+    margin: 0 auto;
+    padding: 40px;
+    max-width: 800px;
+
+}
+
+div .Tabla_Alumnos{
+    background-color: #fafbfb;
+    margin: 10px;
+    padding:40px;
+    text-align:center;
+    color: #1c1c1c;
+    padding: auto;
+}
+
+
+.boton_agregar{
+    display: flex;
+    height: 65px;
+    border: none;
+    cursor: pointer;
+    margin: 5px;
+    border-radius: 5px;
+    padding: 10px 20px;
+    background-color:#4CAF50;
+    color:#fafbfb;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.boton_agregar img{
+    margin-right: 5px;
+}
+
+.boton_agregar:hover{
+    background-color:#45a049;
+    color:#fafbfb;
+}
+
+a{
+    padding: 2px;
+}
+
+.contenedor-boton{
+    display: inline-flex;
+    justify-content: center;
+    margin: 30px;
+    padding: 0;
+    align-items: center;
+}
+
+.boton_agregar img{
+    display: flex;
+    height: 30px;
+    width: 30px;
+    padding: 0;
+}
+
+
+.indicador {
+    display: flex;
+    padding: 10px;
+    margin-bottom: 10px;
+    list-style: none;
+    background-color: transparent;
+    font-size: 20px;
+    background-color: #ccc;
+}
+
+.indicador-item:before {
+    content: "/";
+    content: "/";
+}
+
+.indicador-item:before {
+    color: #6a737b;
+    content: "/";
+}
+
+
+.cont-formularioAlumno{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+
+.formularioA{
+    width:500px;
+	padding:16px;
+	border-radius:10px;
+	margin-top: 25px;
+	background-color:#ccc;
+}
+
+input[type="text"] {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+
+input[type="submit"] {
+    background-color:#333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+input[type="submit"]:hover{
+	cursor:pointer;
+    background-color: #6a737b;
+}
+
+
+button[type="button"] {
+    background-color:#333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+button[type="button"]:hover{
+	cursor:pointer;
+    background-color: #6a737b;
+}
+
+
+/* Boton volver */
+
+
+
+.boton-volver {
+    background-color:gold ;
+    color:#1c1c1c;
+    text-decoration: none;
+    padding: 10px 16px;
+    margin: 16px;
+    border: none;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+
+    position: absolute; /* Esto fija el botón en la pantalla */
+    left: 10px; /* Esto lo coloca a 10px del borde izquierdo */
+    top: 34%; /* Esto lo coloca verticalmente en el centro */
+    transform: translateY(-50%); /* Esto lo ajusta verticalmente */
+}  
+
+.boton-volver:hover {
+    background-color: goldenrod;
+    color:#333;
+}
+
+/* Boton volver */
+
+.pie {
+    display: flex;
+    bottom: 0;
+    position: relative;
+    width: 100%;
+}
+
+footer {
+    display: block;
+    bottom: 0 auto;
+    position: absolute;
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+    font-size: 18px;
+}
+
+
+/* formulario + tabla de contactos */
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color:#fafbfb;
+    box-shadow: 0 0 10px rgba(51, 49, 49, 0.904);
+}
+
+.formulario {
+    text-align: center;
+    padding: 20px 0;
+}
+
+form {
+    display: inline-flex;
+    flex-direction: column;
+}
+
+
+/* menu nav */
+
+nav{
+    width: auto;
+    height: auto;
+    background-color:#1c1c1c;
+    text-align: center;
+    margin: 0;
+    font-size: 20px;
+    padding: 0;
+    overflow: hidden;
+  }
+  
+.menu-horizontal{
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    margin: 0;
+    padding: 0;
+  }
+
+.menu-horizontal > li > a {
+    display: block;
+    padding: 15px 20px;
+    color:#fafbfb;
+    text-decoration: none;
+  }
+
+.menu-horizontal > li:hover{
+    background-color:darkgrey;
+}
+
+.menu-vertical{
+    position: absolute;
+    display: none;
+    list-style: none;
+    width: 200px;
+    background-color: #1c1c1c;
+}
+
+.menu-horizontal li:hover .menu-vertical{
+    display: block;
+}
+
+
+.menu-vertical li:hover{
+    background-color:darkgray;
+}
+
+
+.menu-vertical li > a {
+    display: block;
+    color: #fafbfb;
+    padding: 15px 15px 15px 20px;
+    text-decoration: none;
+    
+}
+  
+  /* Estilo para el nivel 3 */
+  
+  .menu-tercer-nivel {
+    position: absolute;
+    display: none;
+    list-style: none;
+    width: 200px;
+    background-color:#475765;
+    left: 70%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    
+  }
+  
+  .menu-vertical > li:hover .menu-tercer-nivel {
+    display: block;
+  }
+  
+  .menu-tercer-nivel li:hover{
+    background-color:darkgray;
+  }
+
+  .menu-tercer-nivel > li {
+    display: block;
+  }
+  
+  .menu-tercer-nivel > li > a {
+    padding: 10px;
+    color: #fafbfb;
+    text-decoration: none;
+  }
+  
