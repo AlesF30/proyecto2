@@ -108,3 +108,20 @@ function modificar_usuario($id_usuario, $id_perfil, $usuario){
 
     $s->close();
 }
+
+
+function obtenerPass($id_usuario){
+    global $connect;
+
+	$sql="SELECT usuario, contrasena FROM sistbook.usuarios where id_usuario=$id_usuario;";
+
+	$s = $connect->prepare($sql);
+
+    $s->execute();
+
+    $records = $s->get_result()->fetch_all(MYSQLI_ASSOC);
+
+    $s->close();
+
+	return $records;
+}

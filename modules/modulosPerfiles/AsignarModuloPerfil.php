@@ -63,7 +63,7 @@ $perfilModulo = consultarPerfilModulo($id_perfil);
 
 	<section class="container">
 		<div class="formulario">
-			<form method="POST" action="">
+			<form method="POST" action="procesarAsignar.php">
                 <h2>Asignar Modulo al Perfil <?php echo $descripcion ?></h2>
 				<input type="hidden" name="id_perfil" value="<?php echo $id_perfil; ?>">
 
@@ -92,7 +92,6 @@ $perfilModulo = consultarPerfilModulo($id_perfil);
         <table border=1 width="700">
 
             <tr>
-                <th>Id Perfil - Modulo</th>
                 <th>Modulos</th>
                 <th>Modificar</th>
                 <th>Borrar</th>
@@ -101,7 +100,6 @@ $perfilModulo = consultarPerfilModulo($id_perfil);
             <?php foreach ($perfilModulo as $reg2): ?>
 
                 <tr>
-                    <td><?php echo $reg2['id_perfiles_modulo'] ?></td>
                     <td><?php echo $reg2['valor'] ?></td>
                     <td>
                         <a href="<?php echo BASE_URL?>modules\perfil\modificarPerfil.php?id_perfil=<?php echo $reg['id_perfil'] ?>">

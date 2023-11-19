@@ -78,7 +78,9 @@ $records=selectall('perfil');
                     </td>
                     <td>
                         <a href="..\modulosPerfiles\AsignarModuloPerfil.php?id_perfil=<?php echo $reg['id_perfil'] ?>&modulo=administrador&descripcion=<?php echo $reg['descripcion'] ?>">
-                            Ver
+                            <button class="BotonVer">
+                                <img src="<?php echo BASE_URL?>assets/icons/ojo.png" alt="">        
+                            </button>
                         </a>
 				    </td>
                 </tr>

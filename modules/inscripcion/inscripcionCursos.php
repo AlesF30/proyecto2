@@ -12,6 +12,7 @@ include(ROOT_PATH . 'includes\nav.php');
             <label for="alumno">Selecciona al alumno:</label>
             <select id="alumno" name="alumno">
                 <!-- Aquí se cargarían los nombres de los alumnos disponibles -->
+                <!-- faltan modificaciones -->
                 <option value="alumno1">Alumno 1</option>
                 <option value="alumno2">Alumno 2</option>
                 <!-- Otros alumnos -->

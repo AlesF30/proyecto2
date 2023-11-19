@@ -7,22 +7,23 @@ include(ROOT_PATH . 'config/db_functions.php');
 
 $id_usuario=$_SESSION['id_usuario'];
 
-echo $id_usuario;
-
 
 ?>
     <section class="cont-formularioAlumno">
             <div class="formularioA">
             <form action="procesarCambioUsuario.php" method="POST">
-                <label for="usuarioLabel">Nuevo usuario:</label>
-                <input type="text" id="usuarioLabel" name="usuario" placeholder="Nuevo usuario">
+
+                <input type="hidden" name="id_usuario" value="<?php echo $id_usuario ?>">
+                <label for="usuario">Nuevo usuario:</label>
+                    <input type="text" id="usuario" name="usuario" placeholder="Nuevo usuario">
 
                 <br>
 
-                <label for="contrasenaLabel">Contrase&ntildea Actual:</label>
-                <input type="password" id="contrasenaLabel" name="contrasena" placeholder="Nueva Contraseña">
+                <label for="contrasena">Contrase&ntildea Actual:</label>
+                <input type="password" id="contrasena" name="contrasena" placeholder="Nueva Contraseña">
 
                 <br>
+                
 
                 <input type="submit" name="Enviar">
 

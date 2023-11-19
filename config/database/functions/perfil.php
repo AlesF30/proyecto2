@@ -69,3 +69,4 @@ function modificar_perfil($id_perfil, $descripcion){
 
     $s->close();
 }
+

@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title> Ejemplo DataTable </title>
+		<meta name="author" content="Manuel Díaz">
+		<link href="css/jquery.dataTables.min.css" rel="stylesheet" />
+		<style>
+			html {
+				font-family: arial;
+			}
+		</style>
+  	</head>
+  	<body>
+		<script src="js/jquery-3.6.0.min.js"></script>
+		<script src="js/jquery.dataTables.min.js"></script>
+		<script defer>
+			$(document).ready(function() {
+				$('#miTabla').DataTable({
+					searching: true,
+    				ordering: true,
+					paging: true,
+				});
+			});
+		</script>
+		<div>
+			<h1>Mi Tabla</h1>
+			
+			<table id="miTabla" class="display">
+				<thead>
+					<tr>
+						<th> Apellido </th>
+						<th> Nombre </th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Díaz</td>
+						<td>Manuel</td>
+					</tr>
+					<tr>
+						<td>Perez</td>
+						<td>Juan</td>
+					</tr>
+					<tr>
+						<td>Fulano</td>
+						<td>Mengano</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+  </body>
+</html>
+
+

@@ -5,6 +5,7 @@ include(ROOT_PATH . 'config\database\functions\usuarios.php');
 $id_usuario     = htmlspecialchars($_POST['id_usuario']);
 $records     = obtenerPass($id_usuario);
 
+
 foreach($records as $reg){
     $passwordActual = $reg['contrasena'];
     $usernameActual = $reg['usuario'];

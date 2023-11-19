@@ -317,12 +317,13 @@ tr:nth-child(odd) {
 }
 
 .BotonVer{
-    display: flex;
+    display: block;
     width: 100px;
     height: 40px;
     background-color:#ccc;
     justify-content: center;
     align-items: center;
+    margin: 0 auto;
 }
 
 .BotonVer:hover{

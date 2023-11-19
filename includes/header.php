@@ -18,11 +18,11 @@ include (ROOT_PATH . 'config/database/connect.php');
 	<title>Menu de Inicio</title>
 	<meta name="author" content= "Fernandez Soledad Alejandra">
 	<meta name="description" content="Menu de Inicio">
-    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/estilo.css">
+	<link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/estilo.css">
 	<link rel="icon" href="<?php echo BASE_URL; ?>assets/icons/B3.png">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
-<body>
+
 	<div id="agrupar">
 		<header id="cabecera">
 			<div class="logo">

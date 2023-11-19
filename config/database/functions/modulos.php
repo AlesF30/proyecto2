@@ -89,3 +89,12 @@ function consultarPerfilModulo($id_perfil)
 
     return $records;
 }
+
+function asignarModulos($id_perfil, $id_modulo) {
+	global $connect;
+	
+	$sql = "INSERT INTO perfiles_modulos (`rela_perfil`, `rela_modulos` , `activo`) "
+	     . "VALUES ('$id_perfil', '$id_modulo', '1');";
+
+	$connect->query($sql);
+}
