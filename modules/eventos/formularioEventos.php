@@ -69,7 +69,7 @@ $recordsDatoEvento = obtenerDatoEvento();
                         
                     <br>
                         
-                        <label for="evento_estado">Estado:</label>
+                        <label for="evento_estado">Estado del Evento:</label>
                         <select name="evento_estado" id="evento_estado">
                             <option value="0"> - Seleccione un estado -</option>
                             <?php foreach ($recordsDatoEstado as $reg): ?>
@@ -97,7 +97,8 @@ $recordsDatoEvento = obtenerDatoEvento();
 				<th>#</th>
 				<th>Categoria</th>
                 <th>Tipo Evento</th>
-                <th>Estado</th>
+                <th>Estado del Evento</th>
+                <th>Asignar Sponsor a Evento</th>
                 <th>Modificar</th>
 			</tr>
 			<?php foreach ($recordsDatoEvento as $reg) : ?>
@@ -106,6 +107,13 @@ $recordsDatoEvento = obtenerDatoEvento();
                     <td><?php echo $reg['categoria_descripcion'] ?></td>
 					<td><?php echo $reg['tipo_descripcion'] ?></td>
                     <td><?php echo $reg['descripcion_estado'] ?></td>
+                    <td>
+                        <a href="..\eventoSponsor\formularioEventoSponsor.php?id_eventos=<?php echo $reg['id_eventos'] ?>&modulo=sponsor">
+                            <button class="BotonVer">
+                                <img src="<?php echo BASE_URL?>assets/icons/ojo.png" alt="">        
+                            </button>
+                        </a>
+                    </td>
 					<td>
 						<a href="modificarEventos.php?id_eventos=<?php echo $reg['id_eventos'] ?>">
 							<button class="BotonModificar">

@@ -21,6 +21,9 @@ include (ROOT_PATH . 'config/database/connect.php');
 	<link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/estilo.css">
 	<link rel="icon" href="<?php echo BASE_URL; ?>assets/icons/B3.png">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link href="css/select2.min.css" rel="stylesheet" />
+	<script src="js/jquery-3.6.0.min.js"></script>
+	<script src="js/select2.min.js"></script>
 </head>
 
 	<div id="agrupar">
