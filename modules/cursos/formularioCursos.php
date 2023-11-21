@@ -12,6 +12,10 @@ $records=selectall('periodos');
 
 $recordsNiveles=selectall('niveles');
 
+$recordsEstadoCurso=selectall('estado_curso');
+
+$recordsDuracionCurso=selectall('duracion');
+
 
 
 ?>
