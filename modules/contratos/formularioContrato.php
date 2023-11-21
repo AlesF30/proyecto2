@@ -1,5 +1,6 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/config/path.php');
+require_once ('../../config/database/connect.php');
 include(ROOT_PATH .'includes\header.php');
 include(ROOT_PATH .'includes\nav.php');
 include (ROOT_PATH .'config/database/functions/contratos.php');
@@ -12,7 +13,9 @@ $records=selectall('tipo_evento');
 
 $recordsEvento=selectall('evento_estado');
 
-$recordsDias=selectall('duracion_dias');
+$recordsContrato=selectall('estado_contrato');
+
+$recordsDuracion=selectall('duracion_dias');
 
 $recordsDatoContrato = obtenerDatoContrato();
 
@@ -35,11 +38,23 @@ $recordsDatoContrato = obtenerDatoContrato();
                                 <label for="contrato_fecha_alta">Fecha Alta:</label>
                                 <input type="date" name="contrato_fecha_alta"/><br />
                             
+
                                 <br>
+                                    <label for="duracion_dias">Duraci&oacuten del Evento:</label>
+                                    <select name="duracion_dias" id="duracion_dias">
+                                        <option value="0"> - Seleccione una Opcion -</option>
+                                        <?php foreach ($recordsDuracion as $reg): ?>
+                                        <option value="<?php echo $reg['id_duracion_dias'] ?>">
+                                        <?php echo $reg['descripcion'] ?>
+                                        </option>
+                                        <?php endforeach ?>
+                                    </select>
+                            
+                                </br><br>
 
-                                <label for="contratos_dias">Duraci&oacuten del Evento:</label>
-                                <input type="text" name="contratos_dias" /><br />
-
+                                <label>Ingresar Cantidad de Dias:</label>
+                                <input type="text" name="valor">
+                                
                                 <br>
 
                                 <label for="contrato_precio">Precio Acordado:</label>
@@ -94,8 +109,20 @@ $recordsDatoContrato = obtenerDatoContrato();
                                     <select name="evento_estado" id="evento_estado">
                                         <option value="0"> - Seleccione un tipo -</option>
                                         <?php foreach ($recordsEvento as $reg): ?>
-                                            <option value="<?php echo $reg['id_eventos'] ?>">
+                                            <option value="<?php echo $reg['id_evento_estado'] ?>">
                                             <?php echo $reg['descripcion_estado'] ?>
+                                        </option>
+                                        <?php endforeach ?>
+                                    </select>
+
+                                <br><br>
+                                                              
+                                    <label for="estado_contrato">Estado del Contrato:</label>
+                                    <select name="estado_contrato" id="estado_contrato">
+                                        <option value="0"> - Seleccione un tipo -</option>
+                                        <?php foreach ($recordsContrato as $reg): ?>
+                                            <option value="<?php echo $reg['id_estado_contrato'] ?>">
+                                            <?php echo $reg['contrato_estado'] ?>
                                         </option>
                                         <?php endforeach ?>
                                     </select>
@@ -103,6 +130,8 @@ $recordsDatoContrato = obtenerDatoContrato();
                                 <br><br>
 
                                 
+                                <input type="hidden" name="id_contrato" value="<?php echo $id_contrato ?>">
+                                <input type="hidden" name="id_eventos" value="<?php echo $id_eventos ?>">
 
                                 <input type="submit" name="Enviar">
 

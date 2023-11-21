@@ -10,23 +10,16 @@ $id_usuario=$_SESSION['id_usuario'];
 
 ?>
     <section class="cont-formularioAlumno">
-            <div class="formularioA">
+        <div class="formularioA">
             <form action="procesarCambioUsuario.php" method="POST">
 
-                <input type="hidden" name="id_usuario" value="<?php echo $id_usuario ?>">
-                <label for="usuario">Nuevo usuario:</label>
-                    <input type="text" id="usuario" name="usuario" placeholder="Nuevo usuario">
+                <label for="NuevoUsuario">Nuevo Usuario:</label>
+                <input type="text" id="NuevoUsuario" name="NuevoUsuario" required><br><br>
 
-                <br>
+                <label for="passwordActual">Contraseña Actual:</label>
+                <input type="password" id="passwordActual" name="passwordActual" required><br><br>
 
-                <label for="contrasena">Contrase&ntildea Actual:</label>
-                <input type="password" id="contrasena" name="contrasena" placeholder="Nueva Contraseña">
-
-                <br>
-                
-
-                <input type="submit" name="Enviar">
-
+                <input type="submit" value="Guardar">
             </form>
     </section>
 </body>

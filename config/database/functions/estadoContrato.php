@@ -5,10 +5,10 @@ require_once(ROOT_PATH . 'config/database/connect.php');
 
 //CONTRATOS
 
-function alta_duracionDias($valor){
+function alta_estadoContrato($valor){
     global $connect;
 
-    $sql="INSERT INTO `sistbook`.`duracion_dias` (`descripcion`) VALUES ('$valor');";
+    $sql="INSERT INTO `sistbook`.`estado_contrato` (`descripcion_estado`) VALUES ('$valor');";
 
     $s=$connect->prepare($sql);
 
@@ -18,10 +18,10 @@ function alta_duracionDias($valor){
 
 }
 
-function baja_duracionDias($id_duracion_dias){
+function baja_estadoContrato($id_estado_contrato){
     global $connect;
 
-    $sql="DELETE FROM duracion_dias WHERE id_duracion_dias = $id_duracion_dias";
+    $sql="DELETE FROM estado_contrato WHERE id_estado_contrato = $id_estado_contrato";
 
     $s=$connect->prepare($sql);
 

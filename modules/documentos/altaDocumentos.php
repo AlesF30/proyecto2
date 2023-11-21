@@ -70,6 +70,7 @@ $datosDocumentos = obtenerDocumentoPorIdPersona($id_persona);
 				<br><br>
 
 				Documento: <input type="text" name="valor">
+				
 				<br><br>
 
 				<input type="submit" value="Guardar">

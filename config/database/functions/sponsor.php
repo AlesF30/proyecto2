@@ -69,31 +69,29 @@ function guardarSponsorParaEvento($id_eventos, $id_sponsor) {
 
     $stmt = $connect->prepare($sql);
 
-    // Vincular los parámetros y ejecutar la consulta
+
     $stmt->bind_param("ii", $id_eventos, $id_sponsor);
     $stmt->execute();
 
-    // Verificar si la inserción fue exitosa
+
     if ($stmt->affected_rows > 0) {
         echo "Sponsor guardado para el evento correctamente.";
     } else {
         echo "Hubo un error al guardar el sponsor para el evento.";
     }
 
-    // Cerrar la sentencia y la conexión
+
     $stmt->close();
     $connect->close();
 
 }
 
 
-// Esta función debería ir en el archivo donde manejas las interacciones con la base de datos
 
 function obtenerSponsorsPorEvento($id_eventos) {
 
 	global $connect;
 
-    // Preparar la consulta SQL para obtener los sponsors de un evento específico
     $sql = "SELECT 
     s.sponsor_nombre,
     s.sponsor_fecha_alta,
@@ -112,29 +110,30 @@ FROM
 WHERE
     es.rela_eventos = ?;";
 
-    // Preparar la sentencia
+
     $stmt = $connect->prepare($sql);
 
-    // Vincular los parámetros y ejecutar la consulta
+
     $stmt->bind_param("i", $id_eventos);
     $stmt->execute();
 
-    // Obtener el resultado de la consulta
+
     $result = $stmt->get_result();
 
-    // Crear un array para almacenar los datos de los sponsors
+
     $sponsors = array();
 
-    // Iterar sobre el resultado y almacenar los datos en el array
+    
     while ($row = $result->fetch_assoc()) {
         $sponsors[] = $row;
     }
 
-    // Cerrar la sentencia y la conexión
+    
     $stmt->close();
     $connect->close();
 
     return $sponsors;
+
 }
 
 

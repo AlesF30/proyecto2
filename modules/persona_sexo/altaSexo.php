@@ -7,7 +7,6 @@ include(ROOT_PATH .'includes\nav.php');
 include ('../../config/database/functions/personas.php');
 
 
-
 if (!isset($_GET['id_persona'])) {
 	echo "error, ingresaste por el lugar equivocado";
  	exit;

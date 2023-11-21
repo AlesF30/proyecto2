@@ -185,7 +185,7 @@ function obtenerSexoPorIdPersona($id_persona) {
 }
 
 
-function crear_nuevo_sexo($idTipoSexo, $valor, $id_persona) {
+function crear_nuevo_sexo($id_persona, $idTipoSexo, $valor) {
 	global $connect;
 	
 	$sql = "INSERT INTO persona_sexo (rela_persona, rela_tipo_sexo, valor) "

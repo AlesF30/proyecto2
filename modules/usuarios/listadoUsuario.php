@@ -61,8 +61,8 @@ $records = obtenerDatoUsuario();
                         
                         <td>
                             <a href="<?php echo BASE_URL?>resetar_contrasea_usuario.php?id_usuario=<?php echo $reg['id_usuario'] ?>">
-                                <button class="BotonModificar">
-                                    <img src="<?php echo BASE_URL?>assets/icons/editar.png" alt="">        
+                                <button class="BotonContrasena">
+                                    <img src="<?php echo BASE_URL?>assets/icons/contrasena.png" alt="">        
                                 </button>
                             </a>
                         </td>

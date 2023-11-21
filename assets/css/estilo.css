@@ -309,6 +309,53 @@ tr:nth-child(odd) {
 }
 
 
+
+.BotonContrasena img{
+    display: flex;
+    height: 80%;
+    width: 30%;
+    margin: 0 auto;    
+}
+
+.BotonContrasena{
+    display: block;
+    width: 100px;
+    height: 40px;
+    background-color:orange;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.BotonContrasena:hover{
+    background-color:darkgoldenrod;
+    color:#fafbfb;
+}
+
+
+.BotonAsignar img{
+    display: flex;
+    height: 80%;
+    width: 30%;
+    margin: 0 auto;    
+}
+
+.BotonAsignar{
+    display: block;
+    width: 100px;
+    height: 40px;
+    background-color: yellow;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.BotonAsignar:hover{
+    background-color: rgb(179, 179, 44);
+    color:#fafbfb;
+}
+
+
 .BotonVer img{
     display: flex;
     height: 90%;

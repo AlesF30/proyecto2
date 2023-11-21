@@ -109,8 +109,8 @@ $recordsDatoEvento = obtenerDatoEvento();
                     <td><?php echo $reg['descripcion_estado'] ?></td>
                     <td>
                         <a href="..\eventoSponsor\formularioEventoSponsor.php?id_eventos=<?php echo $reg['id_eventos'] ?>&modulo=sponsor">
-                            <button class="BotonVer">
-                                <img src="<?php echo BASE_URL?>assets/icons/ojo.png" alt="">        
+                            <button class="BotonAsignar">
+                                <img src="<?php echo BASE_URL?>assets/icons/asignar.png" alt="">        
                             </button>
                         </a>
                     </td>

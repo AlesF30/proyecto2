@@ -110,18 +110,50 @@ function modificar_usuario($id_usuario, $id_perfil, $usuario){
 }
 
 
-function obtenerPass($id_usuario){
+
+
+function obtenerPass($id_usuario) {
     global $connect;
 
-	$sql="SELECT usuario, contrasena FROM sistbook.usuarios where id_usuario=$id_usuario;";
+    // Preparar la consulta
+    $stmt = $connect->prepare("SELECT usuario, contrasena FROM usuarios WHERE id_usuario = ?");
+    
+    // Vincular parámetros
+    $stmt->bind_param("i", $id_usuario);
+    
+    // Ejecutar la consulta
+    $stmt->execute();
 
-	$s = $connect->prepare($sql);
+    // Obtener resultados
+    $result = $stmt->get_result();
 
-    $s->execute();
+    // Obtener los datos asociados al usuario
+    $usuario = $result->fetch_assoc();
 
-    $records = $s->get_result()->fetch_all(MYSQLI_ASSOC);
+    // Cerrar la consulta
+    $stmt->close();
 
-    $s->close();
-
-	return $records;
+    return $usuario;
 }
+
+
+// Esta función asume que ya tienes una conexión establecida a la base de datos
+
+function cambioDeUsuario($id_usuario, $nuevoUsername) {
+    global $connect; // Debes tener una conexión a la base de datos disponible
+
+    // Sanitiza los datos para prevenir inyección SQL
+    $id_usuario = $connect->real_escape_string($id_usuario);
+    $nuevoUsuario = $connect->real_escape_string($nuevoUsername);
+
+    // Actualiza el nombre de usuario en la base de datos
+    $sql = "UPDATE usuarios SET usuario = '$nuevoUsername' WHERE id = '$id_usuario'";
+
+    if ($connect->query($sql)) {
+        return true; // Cambio de usuario exitoso
+    } else {
+        return false; // Error al cambiar el usuario
+    }
+}
+
+?>
