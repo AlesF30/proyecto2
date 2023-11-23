@@ -302,7 +302,7 @@ function crear_nuevo_fisico($id_persona, $idCarcateristica, $valor) {
 }
 
 
-// Clientes
+// PROFESIONALES
 
 function crear_profesionales($id_persona, $id_contrato, $profesionales_descripcion) {
 	global $connect;
@@ -384,6 +384,105 @@ function modificar_profesionales($id_persona, $nombre, $apellido, $FechaNac, $pr
     $s->execute();
 
     $s->close();
+}
+
+// DOCENTES
+
+function crear_docentes($id_persona) {
+	global $connect;
+
+	$sql = "INSERT INTO docentes (rela_personas) VALUES($id_persona)";
+
+	$connect->query($sql);
+	
+}
+
+function obtenerDatoDocentes($id_persona){
+    global $connect;
+
+	$sql="SELECT * FROM docentes join personas on personas.id_persona=docentes.rela_personas where id_persona= $id_persona;";
+
+	$s = $connect->prepare($sql);
+
+    $s->execute();
+
+    $records = $s->get_result()->fetch_all(MYSQLI_ASSOC);
+
+    $s->close();
+
+	return $records;
+}
+
+function obtenerListadoDocentes(){
+    global $connect;
+
+    $sql="SELECT docentes.id_docentes, personas.id_persona, personas.nombre, personas.apellido, personas.fecha_nacimiento FROM docentes
+		join personas  on personas.id_persona = docentes.rela_personas where personas.activo=1;";
+
+    $datos = $connect->query($sql);
+
+    return $datos;
+
+}
+
+function baja_docentes($id_persona){
+    global $connect;
+    $sql="UPDATE `sistbook`.`personas` SET `activo` = '0' WHERE (`id_persona` = '$id_persona');";
+
+    $connect->query($sql);
+
+}
+
+function modificar_docentes($id_persona, $nombre, $apellido, $FechaNac){
+    global $connect;
+    
+	$sql="UPDATE `sistbook`.`personas` 
+		SET  `nombre` = '$nombre', 
+		`apellido` = '$apellido', 
+		`fecha_nacimiento` = '$FechaNac'
+		WHERE (`id_persona` = '$id_persona');";
+
+	$s = $connect->prepare($sql);
+
+    $s->execute();
+
+    $s->close();
+}
+
+function crear_nuevo_tituloDocente($id_docentes, $id_profesion, $fechaTitulo) {
+	global $connect;
+	
+	$sql = "INSERT INTO titulo_docente (rela_docentes, rela_profesion, fecha_titulo) "
+	     . "VALUES ($id_docentes, $id_profesion, '$fechaTitulo')";
+
+	$connect->query($sql);
+}
+
+
+
+// DOCENTE TITULO
+
+function obtenerProfesion() {
+	global $connect;
+
+	$sql = "SELECT * FROM profesion";
+	$datoprofesion = $connect->query($sql);
+	return $datoprofesion;
+}
+
+
+function obtenerProfesionPorIdDocente($id_docentes) {
+	global $connect;
+	
+	$sql = "SELECT titulo_docente.fecha_titulo, profesion.descripcion_titulo, titulo_docente.id_titulo_docente
+	FROM titulo_docente
+	INNER JOIN profesion ON profesion.id_profesion = titulo_docente.rela_docentes
+	INNER JOIN docentes ON docentes.id_docentes = titulo_docente.rela_docentes
+	WHERE titulo_docente.rela_docentes= $id_docentes;";
+
+	$datoTituloDocente = $connect->query($sql);
+
+	return $datoTituloDocente;
 }
 
 

@@ -82,6 +82,7 @@ function obtenerDatoPersonaUsuario(){
 
 function baja_usuario($id_usuario){
     global $connect;
+
     $sql="UPDATE `sistbook`.`usuarios` SET `activo` = '0' WHERE (`id_usuario` = '$id_usuario');";
 
 
@@ -115,13 +116,12 @@ function modificar_usuario($id_usuario, $id_perfil, $usuario){
 function obtenerPass($id_usuario) {
     global $connect;
 
-    // Preparar la consulta
     $stmt = $connect->prepare("SELECT usuario, contrasena FROM usuarios WHERE id_usuario = ?");
     
     // Vincular parámetros
     $stmt->bind_param("i", $id_usuario);
     
-    // Ejecutar la consulta
+
     $stmt->execute();
 
     // Obtener resultados
@@ -137,19 +137,13 @@ function obtenerPass($id_usuario) {
 }
 
 
-// Esta función asume que ya tienes una conexión establecida a la base de datos
 
 function cambioDeUsuario($id_usuario, $nuevoUsername) {
-    global $connect; // Debes tener una conexión a la base de datos disponible
+    global $connect;
 
-    // Sanitiza los datos para prevenir inyección SQL
-    $id_usuario = $connect->real_escape_string($id_usuario);
-    $nuevoUsuario = $connect->real_escape_string($nuevoUsername);
+    $sql = "UPDATE usuarios SET usuario = '$nuevoUsername' WHERE id_usuario = $id_usuario";
 
-    // Actualiza el nombre de usuario en la base de datos
-    $sql = "UPDATE usuarios SET usuario = '$nuevoUsername' WHERE id = '$id_usuario'";
-
-    if ($connect->query($sql)) {
+    if ($connect->prepare($sql)) {
         return true; // Cambio de usuario exitoso
     } else {
         return false; // Error al cambiar el usuario

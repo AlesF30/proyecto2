@@ -68,7 +68,7 @@ $connect->close();
 				var chart = new CanvasJS.Chart("chartContainer", {
 					animationEnabled: true,
 					title: {
-						text: "Porcentaje por género"
+						text: "Porcentaje por Sexo"
 					},
 					data: [{
 						type: "pie",

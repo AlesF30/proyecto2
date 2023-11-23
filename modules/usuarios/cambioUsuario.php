@@ -6,7 +6,7 @@ include(ROOT_PATH . 'config/db_functions.php');
 
 
 $id_usuario=$_SESSION['id_usuario'];
-
+echo $id_usuario;
 
 ?>
     <section class="cont-formularioAlumno">

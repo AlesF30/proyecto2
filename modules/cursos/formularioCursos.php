@@ -54,8 +54,21 @@ $recordsDuracionCurso=selectall('duracion');
 
                                 <br>
 
-                                <label for="duracion">Duracion:</label>
-                                <input type="text" name="duracion" /><br>
+
+                                    <label for="duracion">Duracion: </label>
+                                    <select name="duracion" id="duracion">
+                                        <option value="0"> - Seleccione un nivel -</option>
+                                        <?php foreach ($recordsDuracionCurso as $reg): ?>
+                                        <option value="<?php echo $reg['id_duracion'] ?>">
+                                        <?php echo $reg['descripcion_duracion'] ?>
+                                        </option>
+                                        <?php endforeach ?>
+                                    </select>
+                            
+                                </br><br>
+
+                                <label>Duracion del Curso:</label>
+                                <input type="text" name="valor">
 
                                 <br>
                                     <label for="niveles">Nivel: </label>
@@ -89,13 +102,27 @@ $recordsDuracionCurso=selectall('duracion');
                                     <select name="periodos" id="periodos">
                                         <option value="0"> - Seleccione un Periodo -</option>
                                         <?php foreach ($records as $reg): ?>
-                                            <option value="<?php echo $reg['id_periodo'] ?>">
+                                            <option value="<?php echo $reg['id_periodos'] ?>">
                                             <?php echo $reg['descripcion'] ?>
                                         </option>
                                         <?php endforeach ?>
                                     </select>
 
-                                <br><br>
+                                <br>
+
+                                
+                                <br>
+                                    <label for="estado_curso">Estado del Curso: </label>
+                                    <select name="estado_curso" id="estado_curso">
+                                        <option value="0"> - Seleccione un nivel -</option>
+                                        <?php foreach ($recordsEstadoCurso as $reg): ?>
+                                        <option value="<?php echo $reg['id_estado_curso'] ?>">
+                                        <?php echo $reg['estado_descripcion'] ?>
+                                        </option>
+                                        <?php endforeach ?>
+                                    </select>
+                            
+                                </br>
                                 
 
                                 <input type="submit" name="Enviar">
