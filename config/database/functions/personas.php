@@ -100,10 +100,11 @@ function obtenerTiposDocumento() {
 
 function obtenerDocumentoPorIdPersona($id_persona) {
 	global $connect;
-	$sql = "SELECT persona_documento.valor, tipo_documento.descripcion as tipo_documento, persona_documento.id_persona_documento "
-	     . "FROM persona_documento "
-	     . "INNER JOIN tipo_documento ON tipo_documento.id_tipo_documento = persona_documento.rela_tipo_documento "
-	     . "WHERE persona_documento.rela_persona = $id_persona";
+	$sql = "SELECT persona_documento.valor, tipo_documento.descripcion as tipo_documento, persona_documento.id_persona_documento, personas.nombre, personas.apellido
+		FROM persona_documento
+		INNER JOIN tipo_documento ON tipo_documento.id_tipo_documento = persona_documento.rela_tipo_documento
+		INNER JOIN personas ON personas.id_persona = persona_documento.rela_persona
+		WHERE persona_documento.rela_persona = $id_persona";
 
 	$datosDocumentos = $connect->query($sql);
 
@@ -138,11 +139,12 @@ function obtenerTiposContactos() {
 function obtenerContactosPorIdPersona($id_persona) {
 	global $connect;
 	
-	$sql = "SELECT persona_contacto.valor, tipo_contacto.descripcion as tipo_contacto, "
-	     . "persona_contacto.id_persona_contacto "
-	     . "FROM persona_contacto "
-	     . "INNER JOIN tipo_contacto ON tipo_contacto.id_tipo_contacto = persona_contacto.rela_tipo_contacto "
-	     . "WHERE persona_contacto.rela_persona = $id_persona";
+	$sql = "SELECT persona_contacto.valor, tipo_contacto.descripcion as tipo_contacto,
+		persona_contacto.id_persona_contacto, personas.nombre, personas.apellido
+		FROM persona_contacto
+		INNER JOIN tipo_contacto ON tipo_contacto.id_tipo_contacto = persona_contacto.rela_tipo_contacto
+		INNER JOIN personas ON personas.id_persona = persona_contacto.rela_persona
+		WHERE persona_contacto.rela_persona = $id_persona";
 
 	$datosContactos = $connect->query($sql);
 
@@ -173,7 +175,7 @@ function obtenerTipoSexo() {
 function obtenerSexoPorIdPersona($id_persona) {
 	global $connect;
 	
-	$sql = "SELECT persona_sexo.valor, tipo_sexo.descripcion, persona_sexo.id_persona_sexo
+	$sql = "SELECT persona_sexo.valor, tipo_sexo.descripcion, persona_sexo.id_persona_sexo, personas.nombre, personas.apellido
 		FROM persona_sexo
 		INNER JOIN tipo_sexo ON tipo_sexo.id_tipo_sexo = persona_sexo.rela_tipo_sexo
 		INNER JOIN personas ON personas.id_persona = persona_sexo.rela_persona
@@ -474,10 +476,11 @@ function obtenerProfesion() {
 function obtenerProfesionPorIdDocente($id_docentes) {
 	global $connect;
 	
-	$sql = "SELECT titulo_docente.fecha_titulo, profesion.descripcion_titulo, titulo_docente.id_titulo_docente
+	$sql = "SELECT titulo_docente.fecha_titulo, profesion.descripcion_titulo, titulo_docente.id_titulo_docente, personas.nombre, personas.apellido
 	FROM titulo_docente
 	INNER JOIN profesion ON profesion.id_profesion = titulo_docente.rela_docentes
 	INNER JOIN docentes ON docentes.id_docentes = titulo_docente.rela_docentes
+    LEFT JOIN personas ON personas.id_persona = docentes.rela_personas
 	WHERE titulo_docente.rela_docentes= $id_docentes;";
 
 	$datoTituloDocente = $connect->query($sql);

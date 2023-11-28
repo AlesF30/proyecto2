@@ -92,6 +92,9 @@ $recordsDatoEvento = obtenerDatoEvento();
     </div>
         
         <div class="tablaMaestra">
+        
+            <h1>LISTADO DE EVENTOS</h1>
+
 			<table border=1 >
 			<tr>
 				<th>#</th>

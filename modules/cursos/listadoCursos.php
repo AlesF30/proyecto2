@@ -38,6 +38,9 @@ $records = obtenerListadoCursos();
         </div>
 
         <div class="Tabla_Alumnos">
+        
+            <h1>LISTADO DE CURSOS</h1>
+
             <table border=1 width="700">
 
                 <tr>
@@ -48,7 +51,6 @@ $records = obtenerListadoCursos();
                     <th>Estado Curso</th>
                     <th>Fecha de Inicio</th>
                     <th>Fecha de Fin</th>
-
                     <th>Precio</th>
                     <th>Duraci&oacuten</th>
                     <th>Modificar</th>
@@ -67,9 +69,10 @@ $records = obtenerListadoCursos();
                         <td><?php echo $reg['cursos_fecha_fin'] ?></td>
 
                         <td><?php echo $reg['cursos_precio'] ?></td>
+                        
                         <td><?php echo $reg['valor'] ?>
                         <?php echo $reg['descripcion_duracion'] ?></td>
-                        
+
                         <td>
                             <a href="<?php echo BASE_URL?>modules\cursos\modificar_cursos.php?id_cursos=<?php echo $reg['id_cursos'] ?>">
                                 <button class="BotonModificar">

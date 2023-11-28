@@ -39,7 +39,7 @@ $perfilModulo = consultarPerfilModulo($id_perfil);
 
 <body>
     
-    <a href="<?php echo $linkVolver ?>" class="boton-volver">
+    <a href="..\perfil\listado_perfil.php" class="boton-volver">
             Volver
     </a>
 

@@ -24,7 +24,7 @@ $modulo = $_GET['modulo'];
 if ($modulo == "alumnos") {
 	$linkVolver = "../alumnos/opcionesAlumno.php";
 } else if ($modulo == "profesionales") {
-	$linkVolver = "../profesionales/listadoProfesionales.php";
+	$linkVolver = "../profesionales/opcionesProfesionales.php";
 }
 
 $datoCaracteristica = obtenerCaracteristica();
@@ -84,6 +84,8 @@ $datoFisico = obtenerFisicoPorIdPersona($id_persona);
 			<table border=1 width="450">
 				
 				<tr>
+					<th>Nombre</th>
+					<th>Apellido</th>
 					<th>Tipo Medida</th>
 					<th>Medida</th>
                     <th>Modificar</th>
@@ -93,6 +95,8 @@ $datoFisico = obtenerFisicoPorIdPersona($id_persona);
 				<?php while($registro = $datoFisico->fetch_assoc()): ?>
 
 					<tr>
+						<td><?php echo $registro['nombre']; ?></td>
+						<td><?php echo $registro['apellido']; ?></td>
                         <td><?php echo $registro['descripcion']; ?></td>
 						<td><?php echo $registro['valor']; ?></td>
                         <td>

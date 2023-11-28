@@ -41,6 +41,7 @@ $records=selectall('tipo_documento');
                             
                                 <label for="tipodoc">Tipo documento</label>
                                 <select name="tipodoc" id="tipodoc">
+                                    <option value="0"> - Elegir un Tipo -</option>
                                     <?php foreach ($records as $reg): ?>
                                     <option value="<?php echo $reg['id_tipo_documento'] ?>">
                                     <?php echo $reg['descripcion'] ?>

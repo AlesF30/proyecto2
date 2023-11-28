@@ -35,6 +35,9 @@ $datos = obtenerListadoDocentes();
     </div>
 
     <div class="Tabla_Alumnos">
+        
+        <h1>Listado de Docentes</h1>
+        
         <table border=1 width="700">
 
             <tr>

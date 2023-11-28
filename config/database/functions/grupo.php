@@ -1,13 +1,13 @@
-y<?php
+<?php
 
 require_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/config/path.php');
 require_once(ROOT_PATH . 'config/database/connect.php');
 
 
-function alta_tipo_contacto($valor){
+function alta_grupo($valor){
     global $connect;
 
-    $sql="INSERT INTO `sistbook`.`tipo_contacto` (`descripcion`) VALUES ('$valor');";
+    $sql="INSERT INTO `sistbook`.`grupo` (`descripcion`) VALUES ('$valor');";
 
     $s=$connect->prepare($sql);
 
@@ -17,10 +17,10 @@ function alta_tipo_contacto($valor){
 
 }
 
-function baja_tipo_contacto($id_tipo_contacto){
+function baja_grupo($id_grupo){
     global $connect;
 
-    $sql="DELETE FROM tipo_contacto WHERE id_tipo_contacto = $id_tipo_contacto";
+    $sql="DELETE FROM grupo WHERE id_grupo = $id_grupo";
 
     $s=$connect->prepare($sql);
 

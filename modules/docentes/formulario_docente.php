@@ -12,7 +12,7 @@ $records=selectall('tipo_documento');
 ?>
 <body>
 
-    <a href="..\clientes\listadoClientes.php" class="boton-volver">
+    <a href="..\docentes\listadoDocente.php" class="boton-volver">
 		Volver
 	</a>
 

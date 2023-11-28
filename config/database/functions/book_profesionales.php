@@ -74,4 +74,27 @@ function eliminarFotoProfesional($idProfesional, $idFoto) {
 }
 
 
+function obtenerBookFotos() {
+	global $connect;
+
+	$sql = "SELECT * FROM book_profesionales";
+	$datosBookProfesionales = $connect->query($sql);
+	return $datosBookProfesionales;
+}
+
+
+function obtenerProfesionalesPorIdPersona($id_profesionales) {
+	global $connect;
+	
+	$sql = "SELECT *
+        FROM book_profesionales
+        INNER JOIN profesionales ON profesionales.id_profesionales = book_profesionales.rela_profesionales
+        LEFT JOIN personas ON personas.id_persona = profesionales.rela_personas
+        WHERE book_profesionales.rela_profesionales = $id_profesionales;";
+
+	$datosFotosProfesionales = $connect->query($sql);
+
+	return $datosFotosProfesionales;
+}
+
 ?>

@@ -53,24 +53,6 @@ $recordsDuracionCurso=selectall('duracion');
                                 <input type="text" name="cursos_precio" /><br>
 
                                 <br>
-
-
-                                    <label for="duracion">Duracion: </label>
-                                    <select name="duracion" id="duracion">
-                                        <option value="0"> - Seleccione un nivel -</option>
-                                        <?php foreach ($recordsDuracionCurso as $reg): ?>
-                                        <option value="<?php echo $reg['id_duracion'] ?>">
-                                        <?php echo $reg['descripcion_duracion'] ?>
-                                        </option>
-                                        <?php endforeach ?>
-                                    </select>
-                            
-                                </br><br>
-
-                                <label>Duracion del Curso:</label>
-                                <input type="text" name="valor">
-
-                                <br>
                                     <label for="niveles">Nivel: </label>
                                     <select name="niveles" id="niveles">
                                         <option value="0"> - Seleccione un nivel -</option>
@@ -123,6 +105,25 @@ $recordsDuracionCurso=selectall('duracion');
                                     </select>
                             
                                 </br>
+
+                                
+                                <br>
+                                    <label for="duracion">Duracion del Curso: </label>
+                                    <select name="duracion" id="duracion">
+                                        <option value="0"> - Seleccione un Opcion -</option>
+                                        <?php foreach ($recordsDuracionCurso as $reg): ?>
+                                        <option value="<?php echo $reg['id_duracion'] ?>">
+                                        <?php echo $reg['descripcion_duracion'] ?>
+                                        </option>
+                                        <?php endforeach ?>
+                                    </select>
+                            
+                                </br>
+
+                                <label>Ingresar Cantidad de Dias:</label>
+                                <input type="text" name="valor">
+
+                                <br>
                                 
 
                                 <input type="submit" name="Enviar">

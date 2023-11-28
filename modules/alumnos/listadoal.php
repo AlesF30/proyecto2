@@ -8,7 +8,8 @@ $datos = obtenerListadoAlumno();
 
 ?>
 
-	<body>		
+	<body>
+	
 		<section>
 			<div class="cont-indicador">
 				<ul class="indicador">
@@ -38,7 +39,7 @@ $datos = obtenerListadoAlumno();
 			<div class="Tabla_Alumnos">
 				<h1>Listado de Alumnos</h1>
 			
-			<table border=1 width="700">
+			<table id="miTabla" class="display">
 				<thead>
 					
 					<tr>
@@ -52,37 +53,38 @@ $datos = obtenerListadoAlumno();
 
 				</thead>
 
-				<?php while($registro = $datos->fetch_assoc()) { ?>
+				
 
 				<tbody>
-					<tr>
-						<td><?php echo $registro['nombre'] ?></td>
-						<td><?php echo $registro['apellido'] ?></td>
-						<td><?php echo $registro['fecha_nacimiento'] ?></td>
-						<td>
-							<a href="../alumnos/opcionesAlumno.php?id_persona=<?php echo $registro['id_persona'] ?>&modulo=alumnos">
-								<button class="BotonVer">
-									<img src="<?php echo BASE_URL?>assets/icons/ojo.png" alt="">        
-								</button>
-							</a>
-						</td>
-						<td>
-							<a href="<?php echo BASE_URL?>modules\alumnos\modificar_alumno.php?id_persona=<?php echo $registro['id_persona'] ?>">
-								<button class="BotonModificar">
-									<img src="<?php echo BASE_URL?>assets/icons/editar.png" alt="">        
-								</button>
-							</a>
-						</td>
-						<td>
-							<a href="<?php echo BASE_URL?>modules\alumnos\baja_alumno.php?id_persona=<?php echo $registro['id_persona']?>">
-								<button class="BotonEliminar">
-									<img src="<?php echo BASE_URL?>assets/icons/basura.png" alt="">        
-								</button>
-							</a>
-						</td>
-					</tr>
+					<?php while($registro = $datos->fetch_assoc()) { ?>
+						<tr>
+							<td><?php echo $registro['nombre'] ?></td>
+							<td><?php echo $registro['apellido'] ?></td>
+							<td><?php echo $registro['fecha_nacimiento'] ?></td>
+							<td>
+								<a href="../alumnos/opcionesAlumno.php?id_persona=<?php echo $registro['id_persona'] ?>&modulo=alumnos">
+									<button class="BotonVer">
+										<img src="<?php echo BASE_URL?>assets/icons/ojo.png" alt="">        
+									</button>
+								</a>
+							</td>
+							<td>
+								<a href="<?php echo BASE_URL?>modules\alumnos\modificar_alumno.php?id_persona=<?php echo $registro['id_persona'] ?>">
+									<button class="BotonModificar">
+										<img src="<?php echo BASE_URL?>assets/icons/editar.png" alt="">        
+									</button>
+								</a>
+							</td>
+							<td>
+								<a href="<?php echo BASE_URL?>modules\alumnos\baja_alumno.php?id_persona=<?php echo $registro['id_persona']?>">
+									<button class="BotonEliminar">
+										<img src="<?php echo BASE_URL?>assets/icons/basura.png" alt="">        
+									</button>
+								</a>
+							</td>
+						</tr>
 
-				<?php } ?>
+					<?php } ?>
 
 				</tbody>
 			</table>

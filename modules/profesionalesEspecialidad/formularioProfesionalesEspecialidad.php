@@ -3,17 +3,17 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/config/path.php');
 require_once ('../../config/database/connect.php');
 include(ROOT_PATH .'includes\header.php');
 include(ROOT_PATH .'includes\nav.php');
-include ('../../config/database/functions/sponsor.php');
+include ('../../config/database/functions/especialidad.php');
 
 
-$id_eventos = $_GET["id_eventos"];
+$id_profesionales = $_GET["id_profesionales"];
 
 $success = isset($_GET['success']) ? $_GET['success'] : null;
 $error = isset($_GET['error']) ? $_GET['error'] : null;
 
 
-$datoSponsor = obtenerSponsor();
-$sponsors = obtenerSponsorsPorEvento($id_eventos);
+$datoEspecialidad = obtenerEspecialidad();
+$especialidades = obtenerProfesionalPorIdEspecialidad($id_profesionales);
 
 
 ?>
@@ -23,7 +23,7 @@ $sponsors = obtenerSponsorsPorEvento($id_eventos);
 
     <?php if ($error) : ?>
         <div id="mensaje-error" class="mensaje-error">
-            <strong>Error:</strong> Por favor selecciona al menos un sponsor para el evento.
+            <strong>Error:</strong> Por favor selecciona al menos una especialidad.
         </div>
         <script>
             var mensajeError = document.getElementById('mensaje-error');
@@ -38,7 +38,7 @@ $sponsors = obtenerSponsorsPorEvento($id_eventos);
         
     <?php elseif ($success) : ?>
         <div id="mensaje-exito" class="mensaje-exito">
-            Los sponsors han sido guardados para el evento.
+            La especialidad ha sido guardada.
         </div>
     <?php endif ?>
     <script>
@@ -54,32 +54,32 @@ $sponsors = obtenerSponsorsPorEvento($id_eventos);
             document.getElementById('enviarBtn').addEventListener('submit', function () {
                 // Recargar la página después de enviar el formulario
                 setTimeout(function () {
-                    window.location.href = 'formularioEventoSponsor.php?id_eventos=$id_eventos';
+                    window.location.href = 'formularioProfesionalesEspecialidad.php?id_profesionales=$id_profesionales';
                 }, 3000); // Tiempo en milisegundos (en este caso, 3 segundos)
             });
         });
 
         </script>
 
-    <a href="../eventos/formularioEventos.php" class="boton-volver">
+    <a href="../profesionales/listadoProfesionales.php" class="boton-volver">
         Volver
     </a>
 
     <section class="container">
 		<div class="formulario">
-            <form id="miFormulario" action="procesarEventoSponsor.php" method="post">
+            <form id="miFormulario" action="procesarProfesionalesEspecialidad.php" method="post">
                 
                 
-			    <h1> Asignar Sponsor</h1>
+			    <h1>Especialidad:</h1>
 
-                <h3>Selecciona los sponsors para el evento:</h3>
+                <h3>Selecciona la especialidad del Profesional:</h3>
                 
-                <select id="sponsorSelect" class="miSelect" name="sponsors[]" multiple="multiple">
+                <select id="especialidadSelect" class="miSelect" name="especialidades[]" multiple="multiple">
                 
                     
-                    <?php while($registro = $datoSponsor->fetch_assoc()): ?>
-                        <option value="<?php echo $registro['id_sponsor'] ?>">
-                        <?php echo $registro['sponsor_nombre'] ?>
+                    <?php while($registro = $datoEspecialidad->fetch_assoc()): ?>
+                        <option value="<?php echo $registro['id_especialidad'] ?>">
+                        <?php echo $registro['especialidad_descripcion'] ?>
                         </option>
                         
                     <?php endwhile ?>
@@ -88,7 +88,7 @@ $sponsors = obtenerSponsorsPorEvento($id_eventos);
 
                 <br><br>
 
-                <input type="hidden" name="id_eventos" value="<?php echo $id_eventos ?>">
+                <input type="hidden" name="id_profesionales" value="<?php echo $id_profesionales ?>">
 
                 <input id="enviarBtn" type="submit" value="Guardar">
             
@@ -99,21 +99,15 @@ $sponsors = obtenerSponsorsPorEvento($id_eventos);
             
             <table border=1 width="450">
                 <tr>
-                    <th>Categoria Evento</th>
-                    <th>Tipo Evento</th>
-                    <th>Fecha Alta</th>
-                    <th>Nombre Sponsor</th>
+                    <th>Especialidad</th>
                     <th>Borrar</th>
                 </tr>
                 
-                <?php foreach ($sponsors as $reg) : ?>
+                <?php foreach ($especialidades as $reg) : ?>
                     <tr>
-                        <td><?php echo $reg['categoria_descripcion'] ?></td>
-                        <td><?php echo $reg['tipo_descripcion'] ?></td>
-                        <td><?php echo $reg['sponsor_fecha_alta'] ?></td>
-                        <td><?php echo $reg['sponsor_nombre'] ?></td>
+                        <td><?php echo $reg['especialidad_descripcion'] ?></td>
                         <td>
-                            <a href="eliminarEventoSponsor.php?id_evento_sponsor=<?php echo $reg['id_evento_sponsor'] ?>">
+                            <a href="eliminarProfesionalesEspecialidad.php?id_profesional_especialidad=<?php echo $reg['id_profesional_especialidad'] ?>">
                                 <button class="Boton_eliminar">
                                     <img src="<?php echo BASE_URL?>assets/icons/basura.png" alt="">
                                     
@@ -132,9 +126,9 @@ $sponsors = obtenerSponsorsPorEvento($id_eventos);
     
     </section>
                     
-                <?php
-                include(ROOT_PATH . 'includes\footer.php');
-                ?>
+    <?php
+    include(ROOT_PATH . 'includes\footer.php');
+    ?>
 
     <script defer>
         $(document).ready(function() {

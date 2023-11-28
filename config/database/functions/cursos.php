@@ -34,7 +34,7 @@ function obtenerListadoCursos(){
             estado_curso ec ON ec.id_estado_curso = c.rela_estado_curso
                 INNER JOIN
             duracion_cursos dc ON dc.rela_cursos = c.id_cursos
-                INNER JOIN
+                LEFT JOIN
             duracion d ON d.id_duracion = dc.rela_duracion;";
 
     $datos = $connect->query($sql);
@@ -73,19 +73,56 @@ function obtenerDatoCursos(){
 	return $records;
 }
 
-// DURACION DIAS DEL CURSOS
-function altaCurso_duracion($id_curso, $duracion, $valor){
+// DURACION DIAS DEL CURSOS TABLA INTERMEDIA
+
+function altaCurso_duracion($id_cursos, $idDuracion, $valor){
     global $connect;
 
-    $sql="INSERT INTO `sistbook`.`duracion_cursos` (`rela_cursos`, `rela_duracion`, `valor`) VALUES ('$id_curso', '$duracion', '$valor');";
+    $sql = "INSERT INTO `sistbook`.`duracion_cursos` (`rela_cursos`, `rela_duracion`, `valor`) VALUES (?, ?, ?)";
 
-    $s=$connect->prepare($sql);
+    // Intentar preparar la consulta
+    $s = $connect->prepare($sql);
 
-    $s->execute();
+    if (!$s) {
+        die('Error al preparar la consulta: ' . $connect->error);
+    }
+
+    // Vincular parámetros y ejecutar la consulta
+    $s->bind_param("iii", $id_cursos, $idDuracion, $valor);
+    $result = $s->execute();
+
+    if (!$result) {
+        die('Error al ejecutar la consulta: ' . $s->error);
+    }
 
     $s->close();
-
 }
+
+
+
+function obtenerDuracion() {
+	global $connect;
+
+	$sql = "SELECT * FROM duracion";
+	$datoDuracion = $connect->query($sql);
+	return $datoDuracion;
+}
+
+
+function obtenerDuracionPorIdCurso($id_cursos) {
+	global $connect;
+	
+	$sql = "SELECT duracion_cursos.valor, duracion.descripcion_duracion, duracion_cursos.id_duracion_cursos
+    FROM duracion_cursos
+    INNER JOIN duracion ON duracion.id_duracion = duracion_cursos.rela_duracion
+    INNER JOIN cursos ON cursos.id_cursos = duracion_cursos.rela_cursos
+    WHERE duracion_cursos.rela_cursos = $id_cursos;";
+
+	$datoDuracionCurso = $connect->query($sql);
+
+	return $datoDuracionCurso;
+}
+
 
 //REPORTE
 
@@ -122,23 +159,33 @@ function reporteCursos(){
             estado_curso ec ON ec.id_estado_curso = c.rela_estado_curso
                 INNER JOIN
             duracion_cursos dc ON dc.rela_cursos = c.id_cursos
-                INNER JOIN
-            duracion d ON d.id_duracion = dc.rela_duracion
                 LEFT JOIN
-            inscripcion i ON grupo.id_grupo = i.rela_grupo
+            duracion d ON d.id_duracion = dc.rela_duracion
+                INNER JOIN
+            inscripcion i ON c.id_cursos = i.rela_cursos
         GROUP BY c.id_cursos
         ORDER BY CantidadInscripciones DESC;";
 
-	$s = $connect->prepare($sql);
+        $s = $connect->prepare($sql);
 
-    $s->execute();
+        if ($s === false) {
+            // Manejar el error en la preparación de la consulta
+            die('Error en la preparación de la consulta: ' . $connect->error);
+        }
 
-    $records = $s->get_result()->fetch_all(MYSQLI_ASSOC);
+        if (!$s->execute()) {
+            // Manejar el error en la ejecución de la consulta
+            die('Error al ejecutar la consulta: ' . $s->error);
+        }
 
-    $s->close();
+            $records = $s->get_result()->fetch_all(MYSQLI_ASSOC);
 
-	return $records;
+            $s->close();
+
+            return $records;
 }
+
+
 
 
 function criterioCursos(){
@@ -148,9 +195,9 @@ function criterioCursos(){
             CURDATE() AS FechaActual,
             COUNT(i.id_inscripcion) AS CantidadInscripciones
         FROM
-            grupo
+            cursos
                 INNER JOIN
-            inscripcion i ON grupo.id_grupo = i.rela_grupo
+            inscripcion i ON cursos.id_cursos = i.rela_cursos
         GROUP BY FechaActual
         ORDER BY CantidadInscripciones DESC;";
 
@@ -228,7 +275,7 @@ function obtenerCursosPorNivel($nivelSeleccionado) {
                         INNER JOIN
                     duracion d ON d.id_duracion = dc.rela_duracion
                         LEFT JOIN
-                    inscripcion i ON grupo.id_grupo = i.rela_grupo
+                    inscripcion i ON c.id_cursos = i.rela_cursos
                 WHERE
                     c.rela_niveles = ?
                 GROUP BY c.id_cursos
@@ -256,4 +303,34 @@ function obtenerCursosPorNivel($nivelSeleccionado) {
         echo "Error: " . $e->getMessage();
         return [];
     }
+}
+
+function obtenerCursos($id_cursos){
+    global $connect;
+
+    $sql="SELECT * FROM sistbook.cursos where id_cursos = $id_cursos;";
+
+    $s = $connect->prepare($sql);
+
+    $s->execute();
+
+    $records = $s->get_result()->fetch_all(MYSQLI_ASSOC);
+
+    $s->close();
+
+    return $records;
+}
+
+function modificar_cursos($id_cursos, $id_niveles, $id_modalidad, $id_periodos, $estado_curso, $cursos_fecha_inicio, $cursos_fecha_fin, $cursos_nombre, $cursos_precio){
+    global $connect;
+
+    $sql="UPDATE `sistbook`.`cursos` SET `rela_niveles` = '$id_niveles', `rela_modalidad` = '$id_modalidad', `rela_periodos` = '$id_periodos', `cursos_fecha_inicio` = '$cursos_fecha_inicio', `cursos_fecha_fin` = '$cursos_fecha_fin', `cursos_nombre` = '$cursos_nombre', `cursos_precio` = '$cursos_precio' WHERE (`id_cursos` = '$id_cursos');";
+
+
+    $s=$connect->prepare($sql);
+
+    $s->execute();
+
+    $s->close();
+
 }

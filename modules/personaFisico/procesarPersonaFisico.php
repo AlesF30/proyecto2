@@ -9,8 +9,7 @@ $valor = $_POST['valor'];
 $id_persona = $_POST['id_persona'];
 $modulo = $_POST['modulo'];
 
-
-crear_nuevo_fisico($id_persona, $idCarcateristica, $valor);
+crear_nuevo_fisico($id_persona, $idCaracteristica, $valor);
 
 header("location: altaPersonaFisico.php?id_persona=$id_persona&modulo=$modulo");
 

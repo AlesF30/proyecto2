@@ -57,7 +57,7 @@ $datoTituloDocente = obtenerProfesionPorIdDocente($id_docentes);
 				<input type="hidden" name="id_docentes" value="<?php echo $id_docentes; ?>">
 				<input type="hidden" name="modulo" value="<?php echo $modulo; ?>">
 
-				Sexo:
+				<h2>TITUTO DEL PROFESIONAL:</h2>
 				<select name="selectTipoSexo">
 
                     <option value="0"> - Seleccione una Opcion -</option>
@@ -83,6 +83,8 @@ $datoTituloDocente = obtenerProfesionPorIdDocente($id_docentes);
 			<table border=1 width="450">
 				
 				<tr>
+					<th>Nombre</th>
+					<th>Apellido</th>
 					<th>Titulo</th>
                     <th>Fecha del Titulo</th>
 					<th>Acciones</th>
@@ -91,6 +93,8 @@ $datoTituloDocente = obtenerProfesionPorIdDocente($id_docentes);
 				<?php while($registro = $datoTituloDocente->fetch_assoc()): ?>
 
 					<tr>
+						<td><?php echo $registro['nombre']; ?></td>
+						<td><?php echo $registro['apellido']; ?></td>
 						<td><?php echo $registro['descripcion_titulo']; ?></td>
                         <td><?php echo $registro['fecha_titulo']; ?></td>
 						<td>

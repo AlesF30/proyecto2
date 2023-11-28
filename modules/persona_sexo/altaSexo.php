@@ -25,7 +25,9 @@ if ($modulo == "alumnos") {
 } else if ($modulo == "clientes") {
 	$linkVolver = "../clientes/listadoClientes.php";
 } else if ($modulo == "profesionales") {
-	$linkVolver = "../profesionales/listadoProfesionales.php";
+	$linkVolver = "../profesionales/opcionesProfesionales.php";
+} else if ($modulo == "docentes") {
+	$linkVolver = "../docentes/listadoDocente.php";
 }
 
 
@@ -80,6 +82,8 @@ $datoSexo = obtenerSexoPorIdPersona($id_persona);
 			<table border=1 width="450">
 				
 				<tr>
+					<th>Nombre</th>
+					<th>Apellido</th>
 					<th>Sexo</th>
 					<th>Acciones</th>
 				</tr>
@@ -87,6 +91,8 @@ $datoSexo = obtenerSexoPorIdPersona($id_persona);
 				<?php while($registro = $datoSexo->fetch_assoc()): ?>
 
 					<tr>
+						<td><?php echo $registro['nombre']; ?></td>
+						<td><?php echo $registro['apellido']; ?></td>
 						<td><?php echo $registro['descripcion']; ?></td>
 						<td>
 						<a href="eliminarSexo.php?id_persona_sexo=<?php echo $registro['id_persona_sexo']?>&id_persona=<?php echo $id_persona ?>&modulo=<?php echo $modulo ?>">

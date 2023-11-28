@@ -24,7 +24,9 @@ if ($modulo == "alumnos") {
 } elseif ($modulo == "clientes") {
 	$linkVolver = "../clientes/listadoClientes.php";
 } else if ($modulo == "profesionales") {
-	$linkVolver = "../profesionales/listadoProfesionales.php";
+	$linkVolver = "../profesionales/opcionesProfesionales.php";
+} else if ($modulo == "docentes") {
+	$linkVolver = "../docentes/listadoDocente.php";
 }
 
 $datosTiposContactos = obtenerTiposContactos();
@@ -74,6 +76,8 @@ $datosContactos = obtenerContactosPorIdPersona($id_persona);
 			<table border=1 width="450">
 		
 				<tr>
+					<th>Nombre</th>
+					<th>Apellido</th>
 					<th>Tipo Contacto</th>
 					<th>Valor</th>
 					<th>Acciones</th>
@@ -82,6 +86,8 @@ $datosContactos = obtenerContactosPorIdPersona($id_persona);
 				<?php while($registro = $datosContactos->fetch_assoc()): ?>
 
 					<tr>
+						<td><?php echo $registro['nombre']; ?></td>
+						<td><?php echo $registro['apellido']; ?></td>
 						<td><?php echo $registro['tipo_contacto']; ?></td>
 						<td><?php echo $registro['valor']; ?></td>
 						<td>

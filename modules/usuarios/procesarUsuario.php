@@ -1,6 +1,6 @@
 <?php
 
-require_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/config/path.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/prog.3Recuperatorio/config/path.php');
 
 include(ROOT_PATH . 'config/database/functions/usuarios.php');
 

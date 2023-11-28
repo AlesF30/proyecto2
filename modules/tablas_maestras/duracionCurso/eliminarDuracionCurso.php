@@ -1,9 +1,9 @@
 <?php
 
-require_once('../../../config/database/functions/duracion_dias.php');
+require_once('../../../config/database/functions/duracionCurso.php');
 
-$id_duracion_dias=$_GET['id_duracion_dias'];
+$id_duracion=$_GET['id_duracion'];
 
-baja_diasSemana($id_dias);
+baja_duracionCurso($id_duracion);
 
-header("location: formularioDiasSemanas.php");
+header("location: formularioDuracionCurso.php");

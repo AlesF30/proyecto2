@@ -27,61 +27,64 @@ $datos = obtenerListadoAlumno();
         </div>
 <div class="conteiner">
     <div class="contenedor-boton">
-        <a href="formulario_alumno.php">
-            <button class= "boton_agregar">
-                <img src="<?php echo BASE_URL?>assets/icons/mas.png" alt="">
-                Nuevo Alumno
-            </button>
+        <a href="..\alumnos\listadoal.php" class="boton-volver">
+            Volver
         </a>
-    </div>
 
     <div class="Tabla_Alumnos">
-        <table border=1 width="700">
-
-            <tr>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Documento</th>
-                <th>Contactos</th>
-                <th>Sexo</th>
-                <th>Medidas</th>
-                
-            <?php while($registro = $datos->fetch_assoc()) { ?>
-
+        
+        <h1>Informacion de Alumnos</h1>
+        
+        <table id="miTabla" class="display">
+            <thead>
                 <tr>
-                    <td><?php echo $registro['nombre'] ?></td>
-                    <td><?php echo $registro['apellido'] ?></td>
-                    <td>
-                        <a href="../documentos/altaDocumentos.php?id_persona=<?php echo $registro['id_persona'] ?>&modulo=alumnos">
-                            <button class="BotonVer">
-                                <img src="<?php echo BASE_URL?>assets/icons/ojo.png" alt="">        
-                            </button>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="../contactos/altaContactos.php?id_persona=<?php echo $registro['id_persona'] ?>&modulo=alumnos">
-                            <button class="BotonVer">
-                                <img src="<?php echo BASE_URL?>assets/icons/ojo.png" alt="">        
-                            </button>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="..\persona_sexo\AltaSexo.php?id_persona=<?php echo $registro['id_persona'] ?>&modulo=alumnos">
-                            <button class="BotonVer">
-                                <img src="<?php echo BASE_URL?>assets/icons/ojo.png" alt="">        
-                            </button>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="..\personaFisico\altaPersonaFisico.php?id_persona=<?php echo $registro['id_persona'] ?>&modulo=alumnos">
-                            <button class="BotonVer">
-                                <img src="<?php echo BASE_URL?>assets/icons/ojo.png" alt="">        
-                            </button>
-                        </a>
-                    </td>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Documento</th>
+                    <th>Contactos</th>
+                    <th>Sexo</th>
+                    <th>Medidas</th>
                 </tr>
-                
-                <?php } ?>
+            </thead>
+            
+            <tbody>
+                <?php while($registro = $datos->fetch_assoc()) { ?>
+
+                    <tr>
+                        <td><?php echo $registro['nombre'] ?></td>
+                        <td><?php echo $registro['apellido'] ?></td>
+                        <td>
+                            <a href="../documentos/altaDocumentos.php?id_persona=<?php echo $registro['id_persona'] ?>&modulo=alumnos">
+                                <button class="BotonVer">
+                                    <img src="<?php echo BASE_URL?>assets/icons/ojo.png" alt="">        
+                                </button>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="../contactos/altaContactos.php?id_persona=<?php echo $registro['id_persona'] ?>&modulo=alumnos">
+                                <button class="BotonVer">
+                                    <img src="<?php echo BASE_URL?>assets/icons/ojo.png" alt="">        
+                                </button>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="..\persona_sexo\AltaSexo.php?id_persona=<?php echo $registro['id_persona'] ?>&modulo=alumnos">
+                                <button class="BotonVer">
+                                    <img src="<?php echo BASE_URL?>assets/icons/ojo.png" alt="">        
+                                </button>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="..\personaFisico\altaPersonaFisico.php?id_persona=<?php echo $registro['id_persona'] ?>&modulo=alumnos">
+                                <button class="BotonVer">
+                                    <img src="<?php echo BASE_URL?>assets/icons/ojo.png" alt="">        
+                                </button>
+                            </a>
+                        </td>
+                    </tr>
+                    
+                    <?php } ?>
+                </tbody>
             
             </table>
         </div>
@@ -90,6 +93,7 @@ $datos = obtenerListadoAlumno();
 <?php
 include(ROOT_PATH . 'includes\footer.php');
 ?>
+
 
 </body>
 </html>

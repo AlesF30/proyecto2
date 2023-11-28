@@ -22,10 +22,10 @@ $recordsCriterio = criterioCursos();
 
 $niveles = obtenerNiveles();
 
-$nivelSeleccionado = isset($_GET['nivel']) ? $_GET['nivel'] : '';
+$nivelSeleccionado = isset($_GET['niveles']) ? $_GET['niveles'] : '';
 
 if (!empty($nivelSeleccionado)) {
-    $records = obtenerCursosPorNivel($nivelSeleccionado); 
+    $recordsCursoNivel = obtenerCursosPorNivel($nivelSeleccionado); 
 } else {
     // Si no se ha seleccionado un nivel, se obtienen todos los cursos
     $records = reporteCursos();
@@ -75,8 +75,8 @@ if (!empty($nivelSeleccionado)) {
         <div class="contenedorFiltro">
             <h2>FILTRO POR NIVEL:</h2>
             <form method="GET" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-                <select name="nivel"> <!-- Cambiado a "nivel" -->
-                    <option value="">Elige un nivel</option>
+                <select name="niveles">
+                    <option value="0">Elige un nivel</option>
                     <?php foreach ($niveles as $nivel): ?>
                         <option value="<?php echo $nivel['id_niveles']; ?>"><?php echo $nivel['descripcion']; ?></option>
                     <?php endforeach; ?>
@@ -107,7 +107,7 @@ if (!empty($nivelSeleccionado)) {
                 <th>Resultado</th>
             </tr>
 
-            <?php foreach ($records as $reg): ?>
+            <?php foreach ($recordsCursoNivel as $reg): ?>
             <tr>
                 <td><?php echo $reg['nivel'] ?></td>
                 <td><?php echo $reg['modalidad'] ?></td>

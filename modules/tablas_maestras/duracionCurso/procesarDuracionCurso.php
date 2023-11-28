@@ -1,11 +1,11 @@
 <?php
-require_once('../../../config/database/functions/duracion_dias.php');
+require_once('../../../config\database\functions\duracionCurso.php');
 
-$valor= $_POST['nueva_duracionCurso'];
+$descripcionDuracion= $_POST['nueva_duracionCurso'];
 
-if(!empty(trim($valor))){
-    alta_duracionDias($valor);
-    header("location: formularioDuracionDias.php");
+if(!empty(trim($descripcionDuracion))){
+    alta_duracionCurso($descripcionDuracion);
+    header("location: formularioDuracionCurso.php");
 }else{
-    header("location: formularioDuracionDias.php");
+    header("location: formularioDuracionCurso.php");
 }

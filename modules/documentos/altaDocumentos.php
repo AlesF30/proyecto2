@@ -26,7 +26,9 @@ if ($modulo == "alumnos") {
 } else if ($modulo == "clientes") {
 	$linkVolver = "../clientes/listadoClientes.php";
 } else if ($modulo == "profesionales") {
-	$linkVolver = "../profesionales/listadoProfesionales.php";
+	$linkVolver = "../profesionales/opcionesProfesionales.php";
+} else if ($modulo == "docentes") {
+	$linkVolver = "../docentes/listadoDocente.php";
 }
 
 $datosTiposDocumentos = obtenerTiposDocumento();
@@ -82,6 +84,8 @@ $datosDocumentos = obtenerDocumentoPorIdPersona($id_persona);
 			<table border=1 width="450">
 				
 				<tr>
+					<th>Nombre</th>
+					<th>Apellido</th>
 					<th>Tipo Documento</th>
 					<th>Valor</th>
 					<th>Acciones</th>
@@ -90,6 +94,8 @@ $datosDocumentos = obtenerDocumentoPorIdPersona($id_persona);
 				<?php while($registro = $datosDocumentos->fetch_assoc()): ?>
 
 					<tr>
+						<td><?php echo $registro['nombre']; ?></td>
+						<td><?php echo $registro['apellido']; ?></td>
 						<td><?php echo $registro['tipo_documento']; ?></td>
 						<td><?php echo $registro['valor']; ?></td>
 						<td> 
