@@ -66,14 +66,12 @@ $datosFotosProfesionales = obtenerProfesionalesPorIdPersona($id_profesionales);
         <div class="tablaMaestra">
             <table border=1 >
                 <tr>
-                    <th>#</th>
                     <th>Ruta</th>
                     <th>Borrar</th>
                 </tr>
 
                 <?php foreach ($datosFotosProfesionales as $reg) : ?>
                     <tr>
-                        <td><?php echo $reg['id_book_profesionales'] ?></td>
                         <td><?php echo $reg['fotos_book'] ?></td>
                         <td>
                             <a href="..\book_profesionales\eliminar_bookFotos.php?id_book_profesionales=<?php echo $reg['id_book_profesionales'] ?>">    

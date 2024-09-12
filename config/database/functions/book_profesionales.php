@@ -97,4 +97,27 @@ function obtenerProfesionalesPorIdPersona($id_profesionales) {
 	return $datosFotosProfesionales;
 }
 
+function obtenerListaProfesionales() {
+    global $connect;
+
+    $sql = "SELECT p.id_profesionales, p.profesionales_descripcion, b.fotos_book, pr.nombre
+        FROM profesionales p
+        INNER JOIN personas pr ON pr.id_persona = p.rela_personas
+        LEFT JOIN book_profesionales b ON p.id_profesionales = b.rela_profesionales
+        WHERE b.id_book_profesionales = (
+            SELECT MIN(id_book_profesionales)
+            FROM book_profesionales
+            WHERE rela_profesionales = p.id_profesionales
+        )";
+
+    $result = $connect->query($sql);
+
+    if (!$result) {
+        die("Error en la consulta: " . $connect->error);
+    }
+
+    return $result->fetch_all(MYSQLI_ASSOC);
+}
+
+
 ?>

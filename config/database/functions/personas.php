@@ -47,7 +47,7 @@ function obtenerListadoAlumno(){
     global $connect;
 
     $sql="SELECT alumnos.id_alumnos, personas.id_persona, personas.nombre, personas.apellido, personas.fecha_nacimiento " 
-    	. "FROM alumnos join personas  on personas.id_persona=alumnos.rela_personas where personas.activo=1;";
+    	. "FROM alumnos join personas  on personas.id_persona=alumnos.rela_personas where personas.activo=1 ORDER BY id_alumnos ;";
 
     $datos = $connect->query($sql);
 
@@ -388,6 +388,94 @@ function modificar_profesionales($id_persona, $nombre, $apellido, $FechaNac, $pr
     $s->close();
 }
 
+
+function obtenerProfesionales() {
+	global $connect;
+
+	$sql = "SELECT * from profesionales INNER JOIN personas ON profesionales.rela_personas = personas.id_persona
+		WHERE personas.activo=1 AND profesionales.activo=1;";
+	
+	$datoProfesionales = $connect->query($sql);
+
+	return $datoProfesionales;
+
+}
+
+
+function obtenerProfesionalesPorContrato($id_contrato) {
+
+	global $connect;
+
+    $sql = "SELECT 
+				pc.id_profesionales_contratos,
+				p.nombre,
+				p.apellido,
+				pr.profesionales_descripcion,
+				c.*
+			FROM
+				profesionales_contratos pc
+					INNER JOIN
+				contratos c ON pc.rela_contrato = c.id_contrato
+					INNER JOIN
+				profesionales pr ON pc.rela_profecionales = pr.id_profesionales
+					LEFT JOIN
+				personas p ON pr.rela_personas = p.id_persona
+			WHERE
+				pc.rela_contrato = ?;";
+
+
+    $stmt = $connect->prepare($sql);
+
+
+    $stmt->bind_param("i", $id_contrato);
+    $stmt->execute();
+
+
+    $result = $stmt->get_result();
+
+
+    $profesionalesContrato = array();
+
+    
+    while ($row = $result->fetch_assoc()) {
+        $profesionalesContrato[] = $row;
+    }
+
+    
+    $stmt->close();
+    $connect->close();
+
+    return $profesionalesContrato;
+
+}
+
+
+function guardarProfesionalesParaContrato($id_contrato, $id_profesionales) {
+       
+	global $connect;
+
+    $sql = "INSERT INTO profesionales_contratos (rela_contrato, rela_profesionales) VALUES (?, ?)";
+
+    $stmt = $connect->prepare($sql);
+
+
+    $stmt->bind_param("ii", $id_contrato, $id_profesionales);
+    $stmt->execute();
+
+
+    if ($stmt->affected_rows > 0) {
+        echo "Profesional guardado en el contrato correctamente.";
+    } else {
+        echo "Hubo un error al guardar el profesional en el contrato.";
+    }
+
+
+    $stmt->close();
+    $connect->close();
+
+}
+
+
 // DOCENTES
 
 function crear_docentes($id_persona) {
@@ -419,7 +507,7 @@ function obtenerListadoDocentes(){
     global $connect;
 
     $sql="SELECT docentes.id_docentes, personas.id_persona, personas.nombre, personas.apellido, personas.fecha_nacimiento FROM docentes
-		join personas  on personas.id_persona = docentes.rela_personas where personas.activo=1;";
+		join personas  on personas.id_persona = docentes.rela_personas where personas.activo=1 ORDER BY personas.activo DESC;";
 
     $datos = $connect->query($sql);
 
@@ -487,6 +575,7 @@ function obtenerProfesionPorIdDocente($id_docentes) {
 
 	return $datoTituloDocente;
 }
+
 
 
 ?>

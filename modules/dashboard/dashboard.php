@@ -48,11 +48,11 @@ $connect->close();
 			<div>
 				<strong>
 					<h2><ins>Hola, <?php echo $_SESSION['nombre'] . ' ' . $_SESSION['apellido'] ?></ins></h2>
-					<br><br>
+					<!-- <br><br>
 					<span>Usuario: <?php echo $_SESSION['usuario']?></span>
 					<br>
 					<span>Perfil: <?php echo $_SESSION['descripcion'] ?></span>	
-					<br><br>	
+					<br><br>	 -->
 					<figure>
 						<img src="../../assets/img/inicio1.jpg">
 						<figcaption>Academia y Agencia de Modelos</figcaption>

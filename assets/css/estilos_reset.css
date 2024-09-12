@@ -1,0 +1,61 @@
+/* estilos_reset.css */
+
+body {
+    background-color: #1c1c1c;
+    font-family: 'PT Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.reset-container {
+    background-color: #fafbfb;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}
+
+.reset-container h1 {
+    font-size: 24px;
+    color: #fafbfb;
+    margin-bottom: 20px;
+}
+
+.reset-container fieldset {
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+.reset-container legend {
+    font-size: 20px;
+    color: #1c1c1c;
+    margin-bottom: 15px;
+}
+
+.reset-container button[type="submit"] {
+    background-color: #1c1c1c;
+    color: #fafbfb;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.reset-container button[type="submit"]:hover {
+    background-color: darkgrey;
+    color: #1c1c1c;
+}
+
+.reset-container img {
+    width: 150px;
+    margin-bottom: 20px;
+}

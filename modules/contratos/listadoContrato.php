@@ -54,6 +54,7 @@ $datos = obtenerListadoContrato();
                 <th>Precio</th>
                 <th>Duracion</th>
                 <th>Estado Evento // Contrato</th>
+                <th>Profesionales</th>
                 <th>Modificar</th>
             </tr>
 
@@ -75,6 +76,13 @@ $datos = obtenerListadoContrato();
                     
                     <td><?php echo $registro['descripcion_estado'] ?> -                 
                     <?php echo $registro['contrato_estado'] ?></td>
+                    <td>
+                        <a href="..\contratoProfesionales\formularioContratoProfesionales.php?id_contrato=<?php echo $registro['id_contrato'] ?>&modulo=profesionales">
+                            <button class="BotonAsignar">
+                                <img src="<?php echo BASE_URL?>assets/icons/asignar.png" alt="">        
+                            </button>
+                        </a>
+                    </td>
                     <td>
                         <a href="<?php echo BASE_URL?>modules\contratos\modificarContrato.php?id_contrato=<?php echo $registro['id_contrato'] ?>">
                             <button class="BotonModificar">

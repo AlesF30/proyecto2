@@ -1,7 +1,7 @@
 <?php
 require_once('../../config\database\functions\perfil.php');
 
-$perfil= $_POST['nuevo_perfil'];
+$perfil = $_POST['nuevo_perfil'];
 
 if(!empty(trim($perfil))){
     alta_perfil($perfil);
@@ -9,3 +9,4 @@ if(!empty(trim($perfil))){
 }else{
     header("location: listado_perfil.php");
 }
+?>

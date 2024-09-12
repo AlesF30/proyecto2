@@ -38,6 +38,7 @@ foreach ($datosAlumnos as $datos):
                             <label for="fecha de nacimiento">Fecha de Nacimiento:</label>
                             <input type="date" name="FechaNac" value="<?php echo $datos ['fecha_nacimiento'];    ?>" /><br>
 
+                            <br>
                             
                             <input type="submit" name="Enviar">
 

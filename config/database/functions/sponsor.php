@@ -31,16 +31,6 @@ function baja_sponsor($id_sponsor){
 
 }
 
-function obtenerSponsor() {
-	global $connect;
-
-	$sql = "SELECT * FROM sponsor";
-	
-	$datoSponsor = $connect->query($sql);
-
-	return $datoSponsor;
-}
-
 
 function obtenerEventoPorSponsorPorIdSponsor($id_eventos) {
 	global $connect;
@@ -86,6 +76,16 @@ function guardarSponsorParaEvento($id_eventos, $id_sponsor) {
 
 }
 
+
+function obtenerSponsor() {
+	global $connect;
+
+	$sql = "SELECT * FROM sponsor";
+	
+	$datoSponsor = $connect->query($sql);
+
+	return $datoSponsor;
+}
 
 
 function obtenerSponsorsPorEvento($id_eventos) {

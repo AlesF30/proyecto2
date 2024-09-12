@@ -54,6 +54,7 @@ $datos = obtenerListadoDocentes();
             </tr>
 
             <?php while($registro = $datos->fetch_assoc()) { ?>
+                
 
                 <tr>
                     <td><?php echo $registro['id_docentes'] ?></td>

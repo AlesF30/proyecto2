@@ -1,48 +1,50 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/config/path.php');
-include(ROOT_PATH .'includes\header.php');
-include(ROOT_PATH .'includes\nav.php');
-include(ROOT_PATH .'config\database\functions\cursos.php');
+include(ROOT_PATH .'includes/header.php');
+include(ROOT_PATH .'includes/nav.php');
+include(ROOT_PATH .'config/database/functions/cursos.php');
 
 $records = obtenerListadoCursos();
-
 ?>
 
 <body>
-
     <div class="cont-indicador">
-            <ul class="indicador">
-                <li>
-                    <a href="<?php echo BASE_URL?>modules/dashboard/dashboard.php">Inicio</a>
-                </li>
-            
-                <li class="indicador-item">
-                    <a>Academia</a>
-                </li>
-                <li class="indicador-item">
-                    <a>Cursos</a>
-                </li>
-                <li class="indicador-item">
-                    <a href="listadoCursos.php" title="Listado Cursos">Listado Cursos</a>
-                </li>
-            </ul>
+        <ul class="indicador">
+            <li>
+                <a href="<?php echo BASE_URL?>modules/dashboard/dashboard.php">Inicio</a>
+            </li>
+            <li class="indicador-item">
+                <a>Academia</a>
+            </li>
+            <li class="indicador-item">
+                <a>Cursos</a>
+            </li>
+            <li class="indicador-item">
+                <a href="listadoCursos.php" title="Listado Cursos">Listado Cursos</a>
+            </li>
+        </ul>
+    </div>
 
     <div class="conteiner">
         <div class="contenedor-boton">
             <a href="formularioCursos.php">
-                <button class= "boton_agregar">
+                <button class="boton_agregar">
                     <img src="<?php echo BASE_URL?>assets/icons/mas.png" alt="">
                     Nuevo Curso
+                </button>
+            </a>
+
+            <a href="..\formularioTresPasos.php">
+                <button class="boton_gruposDias">
+                    <img src="<?php echo BASE_URL?>assets/icons/calendario.png" alt="">
+                    Asignar Grupos y D&iacute;as
                 </button>
             </a>
         </div>
 
         <div class="Tabla_Alumnos">
-        
             <h1>LISTADO DE CURSOS</h1>
-
-            <table border=1 width="700">
-
+            <table border="1" width="700">
                 <tr>
                     <th>Nombre de Curso</th>
                     <th>Nivel</th>
@@ -52,13 +54,13 @@ $records = obtenerListadoCursos();
                     <th>Fecha de Inicio</th>
                     <th>Fecha de Fin</th>
                     <th>Precio</th>
-                    <th>Duraci&oacuten</th>
+                    <th>Duración</th>
+                    <th>Ver Alumnos</th>
                     <th>Modificar</th>
                     <th>Borrar</th>
                 </tr>
 
                 <?php foreach ($records as $reg): ?>
-
                     <tr>
                         <td><?php echo $reg['cursos_nombre'] ?></td>
                         <td><?php echo $reg['nivel'] ?></td>
@@ -67,36 +69,37 @@ $records = obtenerListadoCursos();
                         <td><?php echo $reg['estado_descripcion'] ?></td>
                         <td><?php echo $reg['cursos_fecha_inicio'] ?></td>
                         <td><?php echo $reg['cursos_fecha_fin'] ?></td>
-
                         <td><?php echo $reg['cursos_precio'] ?></td>
-                        
-                        <td><?php echo $reg['valor'] ?>
-                        <?php echo $reg['descripcion_duracion'] ?></td>
-
+                        <td><?php echo $reg['valor'] ?> <?php echo $reg['descripcion_duracion'] ?></td>
+                        <td>
+                            <a href="..\cursos\AlumnoCursos.php?id_cursos=<?php echo $reg['id_cursos'] ?>&modulo=alumnos">
+                                <button class="BotonVer">
+                                    <img src="<?php echo BASE_URL?>assets/icons/ojo.png" alt="">
+                                </button>
+                            </a>
+                        </td>
                         <td>
                             <a href="<?php echo BASE_URL?>modules\cursos\modificar_cursos.php?id_cursos=<?php echo $reg['id_cursos'] ?>">
                                 <button class="BotonModificar">
-                                    <img src="<?php echo BASE_URL?>assets/icons/editar.png" alt="">        
+                                    <img src="<?php echo BASE_URL?>assets/icons/editar.png" alt="">
                                 </button>
                             </a>
                         </td>
                         <td>
                             <a href="<?php echo BASE_URL?>modules\usuarios\bajaUsuario.php?id_usuario=<?php echo $reg['id_usuario'] ?>">
                                 <button class="BotonEliminar">
-                                    <img src="<?php echo BASE_URL?>assets/icons/basura.png" alt="">        
+                                    <img src="<?php echo BASE_URL?>assets/icons/basura.png" alt="">
                                 </button>
                             </a>
                         </td>
                     </tr>
-
                 <?php endforeach ?>
-
             </table>
         </div>
     </div>
 
 <?php
-	include(ROOT_PATH . 'includes\footer.php');
+    include(ROOT_PATH . 'includes/footer.php');
 ?>    
 
 </body>

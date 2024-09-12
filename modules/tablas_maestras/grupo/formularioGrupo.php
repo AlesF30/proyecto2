@@ -43,13 +43,11 @@ $records=selectall('grupo');
 	<div class="tablaMaestra">
 		<table border=1 >
 			<tr>
-				<th>#</th>
 				<th>Grupo</th>
 				<th>Borrar</th>
 			</tr>
 			<?php foreach ($records as $reg) : ?>
 				<tr>
-					<td><?php echo $reg['id_grupo'] ?></td>
 					<td><?php echo $reg['descripcion'] ?></td>
 					<td>
 						<a href="eliminar_grupo.php?id_grupo=<?php echo $reg['id_grupo'] ?>">

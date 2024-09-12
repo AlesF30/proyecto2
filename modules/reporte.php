@@ -74,8 +74,8 @@ if (!empty($nivelSeleccionado)) {
 
         <div class="contenedorFiltro">
             <h2>FILTRO POR NIVEL:</h2>
-            <form method="GET" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-                <select name="nivel"> <!-- Cambiado a "nivel" -->
+            <form method="GET" action="<?php echo ($_SERVER["PHP_SELF"]); ?>">
+                <select name="nivel">
                     <option value="">Elige un nivel</option>
                     <?php foreach ($niveles as $nivel): ?>
                         <option value="<?php echo $nivel['id_niveles']; ?>"><?php echo $nivel['descripcion']; ?></option>
@@ -132,7 +132,7 @@ if (!empty($nivelSeleccionado)) {
     
     <script>
         function generarReporte() {
-            window.print(); // Abre la ventana de impresión al hacer clic en el botón
+            window.print();
         }
     </script>
 

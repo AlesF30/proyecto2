@@ -1,4 +1,4 @@
-y<?php
+<?php
 
 require_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/config/path.php');
 require_once(ROOT_PATH . 'config/database/connect.php');

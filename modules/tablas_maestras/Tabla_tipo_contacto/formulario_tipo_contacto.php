@@ -41,13 +41,11 @@ $records=selectall('tipo_contacto');
 	<div class="tablaMaestra">
 		<table border=1 >
 			<tr>
-				<th>#</th>
 				<th>Tipo</th>
 				<th>Borrar</th>
 			</tr>
 			<?php foreach ($records as $reg) : ?>
 				<tr>
-					<td><?php echo $reg['id_tipo_contacto'] ?></td>
 					<td><?php echo $reg['descripcion'] ?></td>
 					<td>
 						<a href="eliminar_tipo_contacto.php?id_tipo_contacto=<?php echo $reg['id_tipo_contacto'] ?>">

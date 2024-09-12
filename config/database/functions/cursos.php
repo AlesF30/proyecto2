@@ -334,3 +334,20 @@ function modificar_cursos($id_cursos, $id_niveles, $id_modalidad, $id_periodos, 
     $s->close();
 
 }
+
+function obtenerNombreCurso($id_cursos) {
+    global $connect;
+
+    $sql = "SELECT cursos_nombre FROM cursos WHERE id_cursos = ?";
+    $stmt = $connect->prepare($sql);
+    $stmt->bind_param("i", $id_cursos);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        return $row['cursos_nombre'];
+    } else {
+        return "Curso no encontrado";
+    }
+}
