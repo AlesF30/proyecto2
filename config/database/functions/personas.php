@@ -43,17 +43,17 @@ function obtenerDatoAlumno($id_persona){
 }
 
 
-function obtenerListadoAlumno(){
-    global $connect;
+ function obtenerListadoAlumno(){
+     global $connect;
 
-    $sql="SELECT alumnos.id_alumnos, personas.id_persona, personas.nombre, personas.apellido, personas.fecha_nacimiento " 
-    	. "FROM alumnos join personas  on personas.id_persona=alumnos.rela_personas where personas.activo=1 ORDER BY id_alumnos ;";
+     $sql="SELECT alumnos.id_alumnos, personas.id_persona, personas.nombre, personas.apellido, personas.fecha_nacimiento  
+     	FROM alumnos JOIN personas ON personas.id_persona=alumnos.rela_personas WHERE personas.activo=1 ORDER BY id_alumnos;";
 
-    $datos = $connect->query($sql);
+     $datos = $connect->query($sql);
 
-    return $datos;
+     return $datos;
 
-}
+ }
 
 function crear_alumnos($id_persona) {
 	global $connect;
@@ -575,6 +575,52 @@ function obtenerProfesionPorIdDocente($id_docentes) {
 
 	return $datoTituloDocente;
 }
+
+
+ // paguinacion
+
+ function obtenerTotalAlumno() {
+     global $connect;
+
+     $sql = "SELECT COUNT(*) as total FROM alumnos 
+             JOIN personas ON personas.id_persona = alumnos.rela_personas 
+             WHERE personas.activo=1";
+    
+     $s = $connect->prepare($sql);
+     $s->execute();
+     $result = $s->get_result();
+     $row = $result->fetch_assoc();
+     $s->close();
+
+     return $row['total'];
+	 
+ }
+
+
+
+ 
+
+// // Función para obtener los alumnos paginados
+ function obtenerDatoAlumnoPaguinacion($offset, $items_per_page) {
+     global $connect;
+
+     $sql = "SELECT alumnos.id_alumnos, personas.id_persona, personas.nombre, personas.apellido, personas.fecha_nacimiento  
+             FROM alumnos 
+             JOIN personas ON personas.id_persona = alumnos.rela_personas 
+             WHERE personas.activo=1 
+             ORDER BY id_alumnos
+             LIMIT ?, ?;";  // Usamos placeholders para evitar inyección SQL
+
+     $s = $connect->prepare($sql);
+     $s->bind_param("ii", $offset, $items_per_page);  // Vinculamos parámetros
+
+     $s->execute();
+
+     $records = $s->get_result()->fetch_all(MYSQLI_ASSOC);
+     $s->close();
+
+     return $records;
+ }
 
 
 

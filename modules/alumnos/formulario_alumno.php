@@ -12,44 +12,7 @@ $records = selectall('tipo_documento');
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Formulario de Alumno/a</title>
-    <style>
-        .alert {
-            padding: 15px;
-            background-color: #f44336; /* Color de fondo rojo */
-            color: white; /* Color del texto blanco */
-            font-size: 18px;
-            border-radius: 4px;
-            margin-bottom: 15px;
-            display: none; /* Ocultamos el mensaje de alerta inicialmente */
-        }
-
-        .alert.success {
-            background-color: #4CAF50; /* Color de fondo verde para mensaje de éxito */
-        }
-
-        .modal {
-            display: none; /* Ocultar modal inicialmente */
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.4);
-        }
-
-        .modal-content {
-            background-color: #fefefe;
-            margin: 15% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-            text-align: center;
-            border-radius: 5px;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 
@@ -61,42 +24,29 @@ $records = selectall('tipo_documento');
             <fieldset>
                 <legend>Datos personales del Alumno/a</legend>
 
-                <br>
-
                 <label for="nombre">Nombre:</label>
-                <input type="text" name="nombre" required><br>
-
-                <br>
+                <input type="text" id="nombre" name="nombre" required><br>
 
                 <label for="apellido">Apellido:</label>
-                <input type="text" name="apellido" required><br>
+                <input type="text" id="apellido" name="apellido" required><br>
 
-                <br>
-
-                <label for="fecha de nacimiento">Fecha de Nacimiento:</label>
-                <input type="date" name="FechaNac" required><br>
-
-                <br>
+                <label for="FechaNac">Fecha de Nacimiento:</label>
+                <input type="date" id="FechaNac" name="FechaNac" required><br>
 
                 <label for="tipodoc">Tipo documento:</label>
                 <select name="tipodoc" id="tipodoc" required>
-                    <option value="0"> - Elegir un Tipo -</option>
+                    <option value="0">- Elegir un Tipo -</option>
                     <?php foreach ($records as $reg): ?>
                         <option value="<?php echo $reg['id_tipo_documento'] ?>">
                             <?php echo $reg['descripcion'] ?>
                         </option>
-                    <?php endforeach ?>
-                </select>
-
-                <br><br>
+                    <?php endforeach; ?>
+                </select><br><br>
 
                 <label for="documento">Documento:</label>
-                <input type="text" name="documento" required><br>
+                <input type="text" id="documento" name="documento" required><br>
 
-                <br>
-
-                <input type="submit" name="Enviar">
-
+                <input type="submit" value="Enviar">
             </fieldset>
         </form>
     </div>
@@ -111,45 +61,70 @@ $records = selectall('tipo_documento');
 
 <script>
 function validarFormulario() {
-    var nombre = document.forms["formularioAlumno"]["nombre"].value.trim();
-    var apellido = document.forms["formularioAlumno"]["apellido"].value.trim();
-    var fechaNac = document.forms["formularioAlumno"]["FechaNac"].value;
-    var tipoDoc = document.forms["formularioAlumno"]["tipodoc"].value;
-    var documento = document.forms["formularioAlumno"]["documento"].value.trim();
+    var nombre = document.getElementById("nombre").value.trim();
+    var apellido = document.getElementById("apellido").value.trim();
+    var fechaNac = document.getElementById("FechaNac").value;
+    var tipoDoc = document.getElementById("tipodoc").value;
+    var documento = document.getElementById("documento").value.trim();
+    var fechaActual = new Date();
+    var fechaNacimiento = new Date(fechaNac);
+    var edad = fechaActual.getFullYear() - fechaNacimiento.getFullYear();
+    var mes = fechaActual.getMonth() - fechaNacimiento.getMonth();
 
-    if (nombre === "" || apellido === "" || fechaNac === "" || tipoDoc === "0" || documento === "") {
-        mostrarAlerta();
+    // Validar que solo contenga letras, incluyendo ñ, Ñ, acentos y espacios
+    var regexLetras = /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/;
+    if (!regexLetras.test(nombre) || !regexLetras.test(apellido)) {
+        mostrarAlerta('El nombre y el apellido solo deben contener letras.');
         return false;
     }
 
-    // Aquí podrías agregar más validaciones según tus requerimientos
+    // Validar que el documento solo contenga números
+    var regexNumeros = /^[0-9]+$/;
+    if (!regexNumeros.test(documento)) {
+        mostrarAlerta('El documento solo debe contener números.');
+        return false;
+    }
+    
 
-    // Mostrar el modal de registro exitoso
+    // Validar que el usuario sea mayor de edad y no una fecha futura
+    if (mes < 0 || (mes === 0 && fechaActual.getDate() < fechaNacimiento.getDate())) {
+        edad--;
+    }
+    if (edad < 18 || fechaNacimiento > fechaActual) {
+        mostrarAlerta('Debes ser mayor de edad y la fecha de nacimiento no puede ser futura.');
+        return false;
+    }
+
+    // Validacion para verificar que todos los campos estan completos
+    if (nombre === "" || apellido === "" || fechaNac === "" || tipoDoc === "0" || documento === "") {
+        mostrarAlerta('Por favor, complete todos los campos.');
+        return false;
+    }
+
     mostrarModalRegistro();
-
     return true;
 }
 
-function mostrarAlerta() {
+function mostrarAlerta(mensaje) {
     var alerta = document.createElement('div');
     alerta.classList.add('alert');
-    alerta.classList.add('alert-danger'); // Puedes definir estilos para alerta de error si deseas
-    alerta.textContent = 'Por favor, complete todos los campos.';
+    alerta.textContent = mensaje;
     document.body.appendChild(alerta);
+    alerta.style.display = 'block';
     setTimeout(function() {
-        alerta.style.display = 'none'; // Ocultar la alerta después de 3 segundos
-    }, 3000); // 3000 milisegundos = 3 segundos
+        alerta.style.display = 'none';
+    }, 3000);
 }
 
 function mostrarModalRegistro() {
     var modal = document.getElementById('modalRegistroExitoso');
-    modal.style.display = 'block'; // Mostrar el modal de registro exitoso
-
+    modal.style.display = 'block';
     setTimeout(function() {
-        modal.style.display = 'none'; // Ocultar el modal después de 3 segundos
-    }, 3000); // 3000 milisegundos = 3 segundos
+        modal.style.display = 'none';
+    }, 3000);
 }
 </script>
 
 </body>
 </html>
+

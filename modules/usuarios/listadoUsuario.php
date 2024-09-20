@@ -141,9 +141,9 @@ $total_paginas = ceil($total_usuarios / $items_per_page);
                 alertMessage.style.opacity = 0;
                 setTimeout(function() {
                     alertMessage.style.display = 'none';
-                }, 1000); // El mensaje se ocultará completamente después de que se desvanezca
+                }, 1000); // El mensaje se oculta después de que se desvanezca
             }
-        }, 5000); // El mensaje comenzará a desvanecerse después de 5 segundos
+        }, 5000); // El mensaje se desvanecera después de 5 segundos
 
         function confirmarReseteo(nombreUsuario, resetUrl) {
             document.getElementById('modal-message').textContent = '¿Estás seguro de que deseas resetear la contraseña del usuario "' + nombreUsuario + '"?';

@@ -41,7 +41,6 @@ $datos = obtenerListadoDocentes();
         <table border=1 width="700">
 
             <tr>
-                <th>Id Docente</th>
                 <th>Nombre</th>
                 <th>Apellido</th>
                 <th>Fecha Nacimiento</th>
@@ -57,7 +56,6 @@ $datos = obtenerListadoDocentes();
                 
 
                 <tr>
-                    <td><?php echo $registro['id_docentes'] ?></td>
                     <td><?php echo $registro['nombre'] ?></td>
                     <td><?php echo $registro['apellido'] ?></td>
                     <td><?php echo $registro['fecha_nacimiento'] ?></td>
